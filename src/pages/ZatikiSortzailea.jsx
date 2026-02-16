@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useProgress from '../hooks/useProgress';
 import { BookOpen, RefreshCw, ArrowRight, Check, Zap, ListOrdered, Divide, FlaskConical, X, Trophy, BarChart3 } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 const Section = ({ title, icon: Icon, children, className = "" }) => (
   <section className={`mb-12 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden ${className}`}>
@@ -63,6 +65,7 @@ const FractionBar = ({ numerator, denominator, color = "bg-green-500", label = "
 
 // --- Main Component ---
 export default function ZatikiSortzailea() {
+  useDocumentTitle('Zatiki Sortzailea');
   const [activeTab, setActiveTab] = useState('teoria');
 
   // Laborategia state
@@ -892,6 +895,7 @@ export default function ZatikiSortzailea() {
 
       </main>
 
+      <RelatedTopics currentId="zatiki-sortzailea" />
       <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
         <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-green-500">Beñat Erezuma</a></p>
       </footer>

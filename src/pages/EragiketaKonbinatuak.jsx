@@ -12,6 +12,8 @@ import {
   Layers,
   Eye
 } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 const Section = ({ title, icon: Icon, children, className = "" }) => (
   <section className={`mb-12 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden ${className}`}>
@@ -162,6 +164,7 @@ function generatePracticeExpression(difficulty) {
 }
 
 export default function EragiketaKonbinatuak() {
+  useDocumentTitle('Eragiketa Konbinatuak');
   const [activeTab, setActiveTab] = useState('concept');
   const [labExpression, setLabExpression] = useState('3 + 4 * 2 - (6 / 3)');
   const [labSteps, setLabSteps] = useState([]);
@@ -547,6 +550,7 @@ export default function EragiketaKonbinatuak() {
         )}
       </main>
 
+      <RelatedTopics currentId="erag-konb" />
       <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
         <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald-500">Beñat Erezuma</a></p>
       </footer>

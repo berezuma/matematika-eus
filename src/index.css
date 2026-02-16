@@ -1,3 +1,92 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ===== DARK MODE GLOBAL OVERRIDES ===== */
+
+/* --- Backgrounds --- */
+.dark .bg-white { background-color: #1e293b !important; }         /* slate-800 */
+.dark .bg-white\/80 { background-color: rgba(30,41,59,0.8) !important; }
+.dark .bg-slate-50 { background-color: #0f172a !important; }       /* slate-900 */
+.dark .bg-slate-100 { background-color: #1e293b !important; }
+.dark .bg-slate-200 { background-color: #334155 !important; }
+
+/* --- Text --- */
+.dark .text-slate-900 { color: #f1f5f9 !important; }              /* slate-100 */
+.dark .text-slate-800 { color: #e2e8f0 !important; }              /* slate-200 */
+.dark .text-slate-700 { color: #cbd5e1 !important; }              /* slate-300 */
+.dark .text-slate-600 { color: #94a3b8 !important; }              /* slate-400 */
+.dark .text-slate-500 { color: #94a3b8 !important; }
+
+/* --- Borders --- */
+.dark .border-slate-200 { border-color: #334155 !important; }     /* slate-700 */
+.dark .border-slate-100 { border-color: #334155 !important; }
+.dark .border-slate-300 { border-color: #475569 !important; }
+
+/* --- Accent bg tints (keep color, darken) --- */
+.dark .bg-emerald-100 { background-color: rgba(16,185,129,0.15) !important; }
+.dark .bg-emerald-50 { background-color: rgba(16,185,129,0.1) !important; }
+.dark .bg-indigo-100 { background-color: rgba(99,102,241,0.15) !important; }
+.dark .bg-indigo-50 { background-color: rgba(99,102,241,0.1) !important; }
+.dark .bg-purple-100 { background-color: rgba(168,85,247,0.15) !important; }
+.dark .bg-purple-50 { background-color: rgba(168,85,247,0.1) !important; }
+.dark .bg-amber-100 { background-color: rgba(245,158,11,0.15) !important; }
+.dark .bg-amber-50 { background-color: rgba(245,158,11,0.1) !important; }
+.dark .bg-rose-100 { background-color: rgba(244,63,94,0.15) !important; }
+.dark .bg-rose-50 { background-color: rgba(244,63,94,0.1) !important; }
+.dark .bg-pink-100 { background-color: rgba(236,72,153,0.15) !important; }
+.dark .bg-pink-50 { background-color: rgba(236,72,153,0.1) !important; }
+.dark .bg-red-100 { background-color: rgba(239,68,68,0.15) !important; }
+.dark .bg-red-50 { background-color: rgba(239,68,68,0.1) !important; }
+.dark .bg-blue-100 { background-color: rgba(59,130,246,0.15) !important; }
+.dark .bg-blue-50 { background-color: rgba(59,130,246,0.1) !important; }
+.dark .bg-cyan-100 { background-color: rgba(6,182,212,0.15) !important; }
+.dark .bg-cyan-50 { background-color: rgba(6,182,212,0.1) !important; }
+.dark .bg-teal-100 { background-color: rgba(20,184,166,0.15) !important; }
+.dark .bg-teal-50 { background-color: rgba(20,184,166,0.1) !important; }
+.dark .bg-orange-100 { background-color: rgba(249,115,22,0.15) !important; }
+.dark .bg-orange-50 { background-color: rgba(249,115,22,0.1) !important; }
+.dark .bg-green-100 { background-color: rgba(34,197,94,0.15) !important; }
+.dark .bg-green-50 { background-color: rgba(34,197,94,0.1) !important; }
+.dark .bg-sky-100 { background-color: rgba(14,165,233,0.15) !important; }
+.dark .bg-sky-50 { background-color: rgba(14,165,233,0.1) !important; }
+.dark .bg-yellow-100 { background-color: rgba(234,179,8,0.15) !important; }
+.dark .bg-yellow-50 { background-color: rgba(234,179,8,0.1) !important; }
+.dark .bg-gray-100 { background-color: rgba(107,114,128,0.15) !important; }
+.dark .bg-gray-50 { background-color: #1e293b !important; }
+
+/* Gray bg overrides (for Inekuazioak/Kriptografia style pages) */
+.dark .bg-gray-900 { background-color: #0f172a !important; }
+.dark .bg-gray-800 { background-color: #1e293b !important; }
+.dark .text-gray-900 { color: #f1f5f9 !important; }
+.dark .text-gray-800 { color: #e2e8f0 !important; }
+.dark .text-gray-700 { color: #cbd5e1 !important; }
+.dark .text-gray-600 { color: #94a3b8 !important; }
+.dark .text-gray-500 { color: #94a3b8 !important; }
+.dark .text-gray-400 { color: #94a3b8 !important; }
+.dark .border-gray-200 { border-color: #334155 !important; }
+.dark .border-gray-300 { border-color: #475569 !important; }
+.dark .border-gray-700 { border-color: #475569 !important; }
+
+/* --- Inputs / Textarea / Select --- */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  border-color: #475569;
+}
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #64748b;
+}
+
+/* --- Misc --- */
+.dark .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0,0,0,0.3) !important; }
+.dark .shadow-md { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.4) !important; }
+.dark .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.4) !important; }
+.dark .shadow-xl { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.4) !important; }
+
+/* Selection */
+.dark .selection\:bg-indigo-200 *::selection { background-color: rgba(99,102,241,0.3) !important; }
+.dark .selection\:text-indigo-900 *::selection { color: #c7d2fe !important; }

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, GitBranch, ArrowRight, Check, RefreshCw, Zap, ListOrdered, ArrowDown, Play, Square, Diamond, ChevronDown, RotateCcw, X } from 'lucide-react';
 import useProgress from '../hooks/useProgress';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 const Section = ({ title, icon: Icon, children, className = "" }) => (
   <section className={`mb-12 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden ${className}`}>
@@ -199,6 +201,7 @@ const BubbleSortVisualizer = () => {
 // --- Main Component ---
 
 export default function Algoritmoak() {
+  useDocumentTitle('Algoritmoak');
   const [activeTab, setActiveTab] = useState('teoria');
 
   // Flowchart builder state
@@ -1002,6 +1005,7 @@ export default function Algoritmoak() {
 
       </main>
 
+      <RelatedTopics currentId="algoritmoak" />
       <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
         <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-cyan-600">Beñat Erezuma</a></p>
       </footer>

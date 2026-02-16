@@ -16,6 +16,8 @@ import {
   Calculator,
   GitBranch
 } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 // --- Utility Components ---
 
@@ -163,6 +165,7 @@ const SystemGraph = ({ a1, b1, c1, a2, b2, c2 }) => {
 // --- Main Component ---
 
 export default function Sistemak2x2() {
+  useDocumentTitle('Ekuazio Sistemak (2x2)');
   const [activeTab, setActiveTab] = useState('concept');
   const [eq1, setEq1] = useState({ a: 1, b: -1, c: 1 });
   const [eq2, setEq2] = useState({ a: 1, b: 1, c: 5 });
@@ -659,6 +662,11 @@ export default function Sistemak2x2() {
                       {total > 0 && <span className="text-xs opacity-60">({Math.round((score / total) * 100)}%)</span>}
                     </div>
                   </div>
+                {total > 0 && (
+                  <button onClick={() => reset()} className="text-xs text-slate-400 underline hover:text-slate-600 transition-colors">
+                    Puntuazioa berrezarri
+                  </button>
+                )}
 
                   {practiceProblem && (
                     <div className="space-y-8 text-center">
@@ -762,6 +770,7 @@ export default function Sistemak2x2() {
 
       </main>
 
+      <RelatedTopics currentId="sys-2x2" />
       <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
         <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-violet-500">Beñat Erezuma</a></p>
       </footer>

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import useProgress from '../hooks/useProgress';
 import { BookOpen, Calculator, ArrowRight, Check, RefreshCw, Zap, ListOrdered } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 // --- Utility Components ---
 
@@ -209,6 +211,7 @@ const LogarithmGraph = ({ base }) => {
 // --- Main Component ---
 
 export default function Logaritmoak() {
+  useDocumentTitle('Logaritmoak');
   const [activeTab, setActiveTab] = useState('teoria');
   const [labBase, setLabBase] = useState(2);
   const [labNumber, setLabNumber] = useState(8);
@@ -1002,6 +1005,11 @@ export default function Logaritmoak() {
                     {totalAttempts > 0 && <span className="text-xs opacity-60">({Math.round((score / totalAttempts) * 100)}%)</span>}
                   </div>
                 </div>
+                {totalAttempts > 0 && (
+                  <button onClick={() => reset()} className="text-xs text-slate-400 underline hover:text-slate-600 transition-colors">
+                    Puntuazioa berrezarri
+                  </button>
+                )}
 
                 {practiceProblem && (
                   <div className="space-y-8 text-center">
@@ -1086,6 +1094,7 @@ export default function Logaritmoak() {
 
       </main>
 
+      <RelatedTopics currentId="logaritmoak" />
       <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
         <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald-500">Beñat Erezuma</a></p>
       </footer>

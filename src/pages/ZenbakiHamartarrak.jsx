@@ -12,6 +12,8 @@ import {
   Eye,
   Hash
 } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 const Section = ({ title, icon: Icon, children, className = "" }) => (
   <section className={`mb-12 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden ${className}`}>
@@ -156,6 +158,7 @@ const NumberLine = ({ value }) => {
 };
 
 export default function ZenbakiHamartarrak() {
+  useDocumentTitle('Zenbaki Hamartarrak');
   const [activeTab, setActiveTab] = useState('concept');
   const [labInput, setLabInput] = useState('0.75');
   const [labResult, setLabResult] = useState(null);
@@ -538,6 +541,7 @@ export default function ZenbakiHamartarrak() {
         )}
       </main>
 
+      <RelatedTopics currentId="zen-hamar" />
       <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
         <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald-500">Beñat Erezuma</a></p>
       </footer>

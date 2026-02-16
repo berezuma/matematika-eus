@@ -19,6 +19,8 @@ import {
   Trophy,
   AlertTriangle
 } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 // --- Section Component ---
 
@@ -228,6 +230,7 @@ const generatePracticeProblem = () => {
 // --- Main Component ---
 
 export default function UnitateAldaketak() {
+  useDocumentTitle('Unitate Aldaketak');
   const [activeTab, setActiveTab] = useState('teoria');
 
   // Lab state
@@ -838,6 +841,11 @@ export default function UnitateAldaketak() {
                     </div>
                   )}
                 </div>
+                {totalAttempts > 0 && (
+                  <button onClick={() => reset()} className="text-xs text-slate-400 underline hover:text-slate-600 transition-colors">
+                    Puntuazioa berrezarri
+                  </button>
+                )}
 
                 {practiceProblem && (
                   <div className="space-y-8 text-center">
@@ -943,6 +951,7 @@ export default function UnitateAldaketak() {
 
       </main>
 
+      <RelatedTopics currentId="unitate-aldaketak" />
       <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
         <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-teal-500">Beñat Erezuma</a></p>
       </footer>

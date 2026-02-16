@@ -19,6 +19,8 @@ import {
   Vote,
   Thermometer
 } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 // --- Utility Components ---
 
@@ -502,6 +504,7 @@ const DiceSimulator = () => {
 // --- Main Component ---
 
 export default function Estatistika() {
+  useDocumentTitle('Estatistika eta Probabilitatea');
   const [activeTab, setActiveTab] = useState('concept');
   const [problem, setProblem] = useState(null);
   const [userInput, setUserInput] = useState('');
@@ -871,6 +874,11 @@ export default function Estatistika() {
                     {total > 0 && <span className="text-xs opacity-60">({Math.round((score / total) * 100)}%)</span>}
                   </div>
                 </div>
+                {total > 0 && (
+                  <button onClick={() => reset()} className="text-xs text-slate-400 underline hover:text-slate-600 transition-colors">
+                    Puntuazioa berrezarri
+                  </button>
+                )}
 
                 {problem && (
                   <div className="space-y-8 text-center">
@@ -958,6 +966,7 @@ export default function Estatistika() {
 
       </main>
 
+      <RelatedTopics currentId="stat" />
       <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
         <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-pink-500">Beñat Erezuma</a></p>
       </footer>

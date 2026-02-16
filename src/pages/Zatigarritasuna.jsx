@@ -12,6 +12,8 @@ import {
   GitBranch,
   Eye
 } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 const Section = ({ title, icon: Icon, children, className = "" }) => (
   <section className={`mb-12 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden ${className}`}>
@@ -131,6 +133,7 @@ const FactorTree = ({ number }) => {
 };
 
 export default function Zatigarritasuna() {
+  useDocumentTitle('Zatigarritasuna');
   const [activeTab, setActiveTab] = useState('concept');
   const [numA, setNumA] = useState(36);
   const [numB, setNumB] = useState(48);
@@ -513,6 +516,7 @@ export default function Zatigarritasuna() {
         )}
       </main>
 
+      <RelatedTopics currentId="zatigarri" />
       <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
         <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-teal-500">Beñat Erezuma</a></p>
       </footer>

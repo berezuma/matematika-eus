@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useProgress from '../hooks/useProgress';
 import { BookOpen, Cpu, ArrowRight, Check, RefreshCw, Zap, ListOrdered, ToggleLeft, ToggleRight, Brain } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 // --- Utility Components ---
 
@@ -125,6 +127,7 @@ const TruthTable = ({ operator, highlight = false }) => {
 // --- Main Component ---
 
 export default function LogikaBoolearra() {
+  useDocumentTitle('Logika Boolearra');
   const [activeTab, setActiveTab] = useState('teoria');
   const [labA, setLabA] = useState(true);
   const [labB, setLabB] = useState(false);
@@ -849,6 +852,7 @@ export default function LogikaBoolearra() {
 
       </main>
 
+      <RelatedTopics currentId="logika-bool" />
       <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
         <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-cyan-500">Beñat Erezuma</a></p>
       </footer>

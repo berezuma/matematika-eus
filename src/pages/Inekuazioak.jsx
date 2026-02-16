@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Sigma, ArrowRight, Check, RefreshCw, Zap, ListOrdered } from 'lucide-react';
 import useProgress from '../hooks/useProgress';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 const Section = ({ title, icon: Icon, children, className = "" }) => (
   <div className={`bg-white rounded-2xl shadow-md overflow-hidden ${className}`}>
@@ -14,6 +16,7 @@ const Section = ({ title, icon: Icon, children, className = "" }) => (
 );
 
 export default function Inekuazioak() {
+  useDocumentTitle('Inekuazioak eta Tarteak');
   const [activeTab, setActiveTab] = useState('Teoria');
   const tabs = ['Teoria', 'Laborategia', 'Formulak', 'Praktika'];
 
@@ -761,6 +764,7 @@ export default function Inekuazioak() {
       <main className="max-w-6xl mx-auto px-4 py-10">{renderContent()}</main>
 
       {/* Footer */}
+      <RelatedTopics currentId="inekuazioak" />
       <footer className="bg-gray-900 text-gray-400 py-8 mt-12">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <p className="text-sm">

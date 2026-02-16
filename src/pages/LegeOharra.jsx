@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, ChevronRight, Scale, Mail, Globe, User, ShieldCheck } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function LegeOharra() {
+  useDocumentTitle('Lege Oharra');
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50">
       {/* Navbar */}

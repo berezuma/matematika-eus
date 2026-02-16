@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, ChevronRight, Shield, Server, Cookie, Eye, Mail } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function PribatutasunPolitika() {
+  useDocumentTitle('Pribatutasun Politika');
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50">
       {/* Navbar */}

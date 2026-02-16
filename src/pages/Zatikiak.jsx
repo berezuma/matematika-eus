@@ -15,6 +15,8 @@ import {
   Scissors,
   ArrowDown
 } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 // --- Utility Components ---
 
@@ -165,6 +167,7 @@ const FractionVisualizer = () => {
 // --- Main Component ---
 
 export default function Zatikiak() {
+  useDocumentTitle('Zatikiak');
   const [activeTab, setActiveTab] = useState('concept');
   
   // Practice State
@@ -628,6 +631,7 @@ export default function Zatikiak() {
 
       </main>
       
+      <RelatedTopics currentId="frac" />
       <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
         <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-emerald-500">Beñat Erezuma</a></p>
       </footer>

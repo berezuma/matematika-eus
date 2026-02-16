@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useProgress from '../hooks/useProgress';
 import { BookOpen, Shapes, ArrowRight, Check, RefreshCw, Zap, ListOrdered, Triangle, Ruler, Calculator, Scale } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 // --- Utility Components ---
 
@@ -74,6 +76,7 @@ const TrianglePair = ({ a, b, c, aPrime, bPrime, cPrime, k }) => {
 // --- Main Component ---
 
 export default function AntzekotasunaTales() {
+  useDocumentTitle('Antzekotasuna - Tales');
   const [activeTab, setActiveTab] = useState('teoria');
 
   // Lab state
@@ -787,6 +790,11 @@ export default function AntzekotasunaTales() {
                     {totalAttempts > 0 && <span className="text-xs opacity-60">({Math.round((score / totalAttempts) * 100)}%)</span>}
                   </div>
                 </div>
+                {totalAttempts > 0 && (
+                  <button onClick={() => reset()} className="text-xs text-slate-400 underline hover:text-slate-600 transition-colors">
+                    Puntuazioa berrezarri
+                  </button>
+                )}
 
                 {practiceProblem && (
                   <div className="space-y-8 text-center">
@@ -887,6 +895,7 @@ export default function AntzekotasunaTales() {
       </main>
 
       {/* Footer */}
+      <RelatedTopics currentId="antzekotasuna" />
       <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
         <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-amber-500">Beñat Erezuma</a></p>
       </footer>

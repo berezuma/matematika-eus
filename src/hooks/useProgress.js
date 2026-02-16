@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 
 const STORAGE_KEY = 'mate-progress';
+const SESSION_KEY = 'mate-session';
 
 function loadAll() {
   try {
@@ -14,9 +15,30 @@ function saveAll(data) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
+function loadSession(topicId) {
+  try {
+    const sessions = JSON.parse(localStorage.getItem(SESSION_KEY)) || {};
+    return sessions[topicId] || { score: 0, total: 0 };
+  } catch {
+    return { score: 0, total: 0 };
+  }
+}
+
+function saveSession(topicId, score, total) {
+  try {
+    const sessions = JSON.parse(localStorage.getItem(SESSION_KEY)) || {};
+    if (total === 0) {
+      delete sessions[topicId];
+    } else {
+      sessions[topicId] = { score, total };
+    }
+    localStorage.setItem(SESSION_KEY, JSON.stringify(sessions));
+  } catch {}
+}
+
 export default function useProgress(topicId) {
-  const [score, setScore] = useState(0);
-  const [total, setTotal] = useState(0);
+  const [score, setScore] = useState(() => loadSession(topicId).score);
+  const [total, setTotal] = useState(() => loadSession(topicId).total);
 
   const addCorrect = useCallback(() => {
     setScore(s => s + 1);
@@ -31,6 +53,11 @@ export default function useProgress(topicId) {
     setScore(0);
     setTotal(0);
   }, []);
+
+  // Persist current session
+  useEffect(() => {
+    saveSession(topicId, score, total);
+  }, [score, total, topicId]);
 
   // Save best session to localStorage whenever score/total change
   useEffect(() => {

@@ -20,6 +20,7 @@ import {
   Calculator,
   TrendingUp
 } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 /* ─────────────────────────────────────────────
    USaP AZTERKETA PRESTAKETA
@@ -558,6 +559,7 @@ const PRAKTIKA_GZ = [
    ───────────────────────────────────────────── */
 
 export default function Usap() {
+  useDocumentTitle('USaP Azterketa');
   const [fasea, setFasea] = useState('hasiera'); // hasiera | azterketa | praktika
   const [azterketaMota, setAzterketaMota] = useState(null); // 'mate' | 'gz'
   const [irekitakoAriketa, setIrekitakoAriketa] = useState(null);

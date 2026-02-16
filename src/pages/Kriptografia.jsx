@@ -2,6 +2,8 @@ import React, { useState, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import useProgress from '../hooks/useProgress';
 import { BookOpen, Lock, ArrowRight, Check, RefreshCw, Zap, ListOrdered, KeyRound, ShieldCheck, Unlock, FlaskConical, Calculator, GraduationCap, ChevronRight, RotateCcw } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -59,6 +61,7 @@ function generateProblem() {
 }
 
 export default function Kriptografia() {
+  useDocumentTitle('Kriptografia');
   const [activeTab, setActiveTab] = useState('Teoria');
   const tabs = ['Teoria', 'Laborategia', 'Formulak', 'Praktika'];
 
@@ -647,6 +650,7 @@ export default function Kriptografia() {
       </main>
 
       {/* FOOTER */}
+      <RelatedTopics currentId="kriptografia" />
       <footer className="bg-gray-900 text-gray-400 py-8">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <p className="text-sm">

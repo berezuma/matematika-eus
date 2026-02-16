@@ -16,6 +16,8 @@ import {
   ListOrdered,
   Equal
 } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 // --- Utility Components ---
 
@@ -152,6 +154,7 @@ const LinearGraph = ({ a, b }) => {
 // --- Main Component ---
 
 export default function LehenMailakoa() {
+  useDocumentTitle('Lehen Mailako Ekuazioak');
   const [activeTab, setActiveTab] = useState('concept');
   const [graphParams, setGraphParams] = useState({ a: 2, b: -3 });
   const [practiceProblem, setPracticeProblem] = useState(null);
@@ -745,6 +748,7 @@ export default function LehenMailakoa() {
 
       </main>
 
+      <RelatedTopics currentId="ecu-1" />
       <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
         <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-500">Beñat Erezuma</a></p>
       </footer>

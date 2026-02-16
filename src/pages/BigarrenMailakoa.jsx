@@ -16,6 +16,8 @@ import {
   Zap,
   History
 } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import RelatedTopics from '../components/RelatedTopics';
 
 // --- Utility Components ---
 
@@ -132,6 +134,7 @@ const QuadraticGraph = ({ a, b, c }) => {
 // --- Main App Component ---
 
 export default function BigarrenMailakoa() {
+  useDocumentTitle('Bigarren Mailako Ekuazioak');
   const [activeTab, setActiveTab] = useState('concept');
   const [graphParams, setGraphParams] = useState({ a: 1, b: -2, c: -3 });
   const [practiceProblem, setPracticeProblem] = useState(null);
@@ -628,6 +631,7 @@ export default function BigarrenMailakoa() {
 
       </main>
       
+      <RelatedTopics currentId="ecu-2" />
       <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
         <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-500">Beñat Erezuma</a></p>
       </footer>

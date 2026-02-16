@@ -21,6 +21,7 @@ import {
   Lightbulb,
   TrendingUp
 } from 'lucide-react';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 /* ─────────────────────────────────────────────
    DBH2 EBALUAZIO DIAGNOSTIKO INTERAKTIBOA
@@ -189,6 +190,7 @@ const GALDERAK = [
    ───────────────────────────────────────────── */
 
 export default function Diagnostikoa() {
+  useDocumentTitle('Diagnostikoa');
   const [fasea, setFasea] = useState('hasiera'); // hasiera | testa | emaitzak
   const [unekoGaldera, setUnekoGaldera] = useState(0);
   const [erantzunak, setErantzunak] = useState({});
