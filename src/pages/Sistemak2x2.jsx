@@ -654,8 +654,9 @@ export default function Sistemak2x2() {
                 <div className="max-w-xl mx-auto">
 
                   <div className="flex justify-center mb-6">
-                    <div className="bg-violet-50 border border-violet-100 px-6 py-2 rounded-full text-sm font-bold text-violet-700">
-                      Puntuazioa: {score}
+                    <div className="bg-violet-50 border border-violet-100 px-6 py-2 rounded-full text-sm font-bold text-violet-700 flex items-center gap-3">
+                      <span>Puntuazioa: {score}/{total}</span>
+                      {total > 0 && <span className="text-xs opacity-60">({Math.round((score / total) * 100)}%)</span>}
                     </div>
                   </div>
 

@@ -699,15 +699,11 @@ export default function LogikaBoolearra() {
             <Section title="Ariketa Boolearra" icon={Brain} className="border-cyan-200 ring-4 ring-cyan-50/50">
               <div className="max-w-xl mx-auto">
 
-                <div className="flex justify-center gap-4 mb-6">
-                  <div className="bg-cyan-50 border border-cyan-100 px-6 py-2 rounded-full text-sm font-bold text-cyan-700">
-                    Puntuazioa: {score} / {totalAttempts}
+                <div className="flex justify-center mb-6">
+                  <div className="bg-cyan-50 border border-cyan-100 px-6 py-2 rounded-full text-sm font-bold text-cyan-700 flex items-center gap-3">
+                    <span>Puntuazioa: {score}/{totalAttempts}</span>
+                    {totalAttempts > 0 && <span className="text-xs opacity-60">({Math.round((score / totalAttempts) * 100)}%)</span>}
                   </div>
-                  {totalAttempts > 0 && (
-                    <div className="bg-slate-50 border border-slate-200 px-6 py-2 rounded-full text-sm font-bold text-slate-600">
-                      {Math.round((score / totalAttempts) * 100)}%
-                    </div>
-                  )}
                 </div>
 
                 {practiceProblem && (

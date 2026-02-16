@@ -781,15 +781,11 @@ export default function AntzekotasunaTales() {
               <div className="max-w-xl mx-auto">
 
                 {/* Score */}
-                <div className="flex justify-center gap-4 mb-6">
-                  <div className="bg-amber-50 border border-amber-100 px-6 py-2 rounded-full text-sm font-bold text-amber-700">
-                    Puntuazioa: {score} / {totalAttempts}
+                <div className="flex justify-center mb-6">
+                  <div className="bg-amber-50 border border-amber-100 px-6 py-2 rounded-full text-sm font-bold text-amber-700 flex items-center gap-3">
+                    <span>Puntuazioa: {score}/{totalAttempts}</span>
+                    {totalAttempts > 0 && <span className="text-xs opacity-60">({Math.round((score / totalAttempts) * 100)}%)</span>}
                   </div>
-                  {totalAttempts > 0 && (
-                    <div className="bg-slate-50 border border-slate-200 px-4 py-2 rounded-full text-sm font-bold text-slate-600">
-                      {((score / totalAttempts) * 100).toFixed(0)}%
-                    </div>
-                  )}
                 </div>
 
                 {practiceProblem && (

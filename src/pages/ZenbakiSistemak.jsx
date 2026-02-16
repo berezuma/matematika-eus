@@ -728,8 +728,9 @@ export default function ZenbakiSistemak() {
               <div className="max-w-xl mx-auto">
 
                 <div className="flex justify-center mb-6">
-                  <div className="bg-green-50 border border-green-100 px-6 py-2 rounded-full text-sm font-bold text-green-700">
-                    Puntuazioa: {score}
+                  <div className="bg-green-50 border border-green-100 px-6 py-2 rounded-full text-sm font-bold text-green-700 flex items-center gap-3">
+                    <span>Puntuazioa: {score}/{total}</span>
+                    {total > 0 && <span className="text-xs opacity-60">({Math.round((score / total) * 100)}%)</span>}
                   </div>
                 </div>
 

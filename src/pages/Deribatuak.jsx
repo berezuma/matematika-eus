@@ -664,8 +664,9 @@ export default function Deribatuak() {
               <div className="max-w-xl mx-auto">
 
                 <div className="flex justify-center mb-6">
-                  <div className="bg-red-50 border border-red-100 px-6 py-2 rounded-full text-sm font-bold text-red-700">
-                    Puntuazioa: {score}
+                  <div className="bg-red-50 border border-red-100 px-6 py-2 rounded-full text-sm font-bold text-red-700 flex items-center gap-3">
+                    <span>Puntuazioa: {score}/{total}</span>
+                    {total > 0 && <span className="text-xs opacity-60">({Math.round((score / total) * 100)}%)</span>}
                   </div>
                 </div>
 

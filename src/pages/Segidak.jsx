@@ -874,15 +874,11 @@ export default function Segidak() {
             <Section title="Entrenamendua" icon={Zap} className="border-rose-200 ring-4 ring-rose-50/50">
               <div className="max-w-xl mx-auto">
 
-                <div className="flex justify-center gap-4 mb-6">
-                  <div className="bg-rose-50 border border-rose-100 px-6 py-2 rounded-full text-sm font-bold text-rose-700">
-                    Puntuazioa: {score} / {total}
+                <div className="flex justify-center mb-6">
+                  <div className="bg-rose-50 border border-rose-100 px-6 py-2 rounded-full text-sm font-bold text-rose-700 flex items-center gap-3">
+                    <span>Puntuazioa: {score}/{total}</span>
+                    {total > 0 && <span className="text-xs opacity-60">({Math.round((score / total) * 100)}%)</span>}
                   </div>
-                  {total > 0 && (
-                    <div className="bg-slate-50 border border-slate-200 px-6 py-2 rounded-full text-sm font-bold text-slate-600">
-                      {Math.round((score / total) * 100)}%
-                    </div>
-                  )}
                 </div>
 
                 {problem && (

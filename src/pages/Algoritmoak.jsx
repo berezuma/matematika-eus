@@ -866,7 +866,7 @@ export default function Algoritmoak() {
                       </span>
                       <div className="flex items-center gap-2">
                         <Check size={16} className="text-green-500" />
-                        <span className="text-sm font-bold text-slate-700">Puntuazioa: {quizScore}</span>
+                        <span className="text-sm font-bold text-slate-700">Puntuazioa: {quizScore}/{quizTotal}</span>
                       </div>
                     </div>
                     <div className="w-full bg-slate-200 rounded-full h-2">

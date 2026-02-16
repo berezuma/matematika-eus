@@ -996,15 +996,11 @@ export default function Logaritmoak() {
             <Section title="Entrenamendua" icon={Calculator} className="border-emerald-200 ring-4 ring-emerald-50/50">
               <div className="max-w-xl mx-auto">
 
-                <div className="flex justify-center gap-4 mb-6">
-                  <div className="bg-emerald-50 border border-emerald-100 px-6 py-2 rounded-full text-sm font-bold text-emerald-700">
-                    Puntuazioa: {score}
+                <div className="flex justify-center mb-6">
+                  <div className="bg-emerald-50 border border-emerald-100 px-6 py-2 rounded-full text-sm font-bold text-emerald-700 flex items-center gap-3">
+                    <span>Puntuazioa: {score}/{totalAttempts}</span>
+                    {totalAttempts > 0 && <span className="text-xs opacity-60">({Math.round((score / totalAttempts) * 100)}%)</span>}
                   </div>
-                  {totalAttempts > 0 && (
-                    <div className="bg-slate-50 border border-slate-200 px-6 py-2 rounded-full text-sm font-bold text-slate-600">
-                      {score}/{totalAttempts} ({Math.round((score / totalAttempts) * 100)}%)
-                    </div>
-                  )}
                 </div>
 
                 {practiceProblem && (

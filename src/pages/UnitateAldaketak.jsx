@@ -825,8 +825,9 @@ export default function UnitateAldaketak() {
 
                 {/* Score board */}
                 <div className="flex justify-center gap-4 mb-6">
-                  <div className="bg-teal-50 border border-teal-100 px-6 py-2 rounded-full text-sm font-bold text-teal-700">
-                    Zuzenak: {score}
+                  <div className="bg-teal-50 border border-teal-100 px-6 py-2 rounded-full text-sm font-bold text-teal-700 flex items-center gap-3">
+                    <span>Zuzenak: {score}/{totalAttempts}</span>
+                    {totalAttempts > 0 && <span className="text-xs opacity-60">({Math.round((score / totalAttempts) * 100)}%)</span>}
                   </div>
                   <div className="bg-slate-50 border border-slate-100 px-6 py-2 rounded-full text-sm font-bold text-slate-600">
                     Saiakerak: {totalAttempts}
