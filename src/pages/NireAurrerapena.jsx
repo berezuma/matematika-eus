@@ -155,7 +155,7 @@ export default function NireAurrerapena() {
               <BarChart3 className="w-5 h-5 text-indigo-600" />
             </div>
             <p className="text-2xl font-bold text-slate-900">{stats.practicedCount}/{stats.totalTopics}</p>
-            <p className="text-xs text-slate-500 font-medium">Ikasgai landuta</p>
+            <p className="text-xs text-slate-500 font-medium">Gai landuta</p>
           </div>
           <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm text-center">
             <div className="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto mb-3">
@@ -186,7 +186,7 @@ export default function NireAurrerapena() {
               <BarChart3 className="w-8 h-8 text-slate-400" />
             </div>
             <h2 className="text-xl font-bold text-slate-700 mb-2">Oraindik ez duzu ariketarik egin</h2>
-            <p className="text-slate-500 mb-6">Hasi ikasgai bat praktikatzen eta hemen agertuko da zure aurrerapena.</p>
+            <p className="text-slate-500 mb-6">Hasi gai bat praktikatzen eta hemen agertuko da zure aurrerapena.</p>
             <Link to="/#topics" className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-colors">
               Hasi orain
             </Link>
@@ -219,7 +219,7 @@ export default function NireAurrerapena() {
 
             {/* Recent activity / all topics */}
             <div className="mb-10">
-              <h2 className="text-xl font-bold text-slate-900 mb-4">Ikasgaien zerrenda</h2>
+              <h2 className="text-xl font-bold text-slate-900 mb-4">Gaien zerrenda</h2>
               <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
                 {stats.sorted.map((entry, idx) => {
                   const colors = CATEGORY_COLORS[entry.category] || CATEGORY_COLORS['Aritmetika'];

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import useProgress from '../hooks/useProgress';
 import {
@@ -20,6 +20,8 @@ import {
 } from 'lucide-react';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import RelatedTopics from '../components/RelatedTopics';
+
+const ThreeShapeViewer = lazy(() => import('../components/ThreeShapeViewer'));
 
 // --- Utility ---
 
@@ -57,18 +59,12 @@ const SHAPES_2D = [
       { key: 'h', label: 'Altuera (h)', default: 4 },
     ],
     area: (p) => (p.b * p.h) / 2,
-    perimeter: null,
+    perimeter: (p) => {
+      const s = Math.sqrt(p.h * p.h + (p.b / 2) * (p.b / 2));
+      return p.b + 2 * s;
+    },
     areaFormula: 'A = (b × h) / 2',
-    perimeterFormula: null,
-    draw: (ctx, p, cx, cy, scale) => {
-      const bw = p.b * scale;
-      const hh = p.h * scale;
-      ctx.beginPath();
-      ctx.moveTo(cx - bw / 2, cy + hh / 2);
-      ctx.lineTo(cx + bw / 2, cy + hh / 2);
-      ctx.lineTo(cx, cy - hh / 2);
-      ctx.closePath();
-    }
+    perimeterFormula: 'P = b + 2s (isoszelea)',
   },
   {
     id: 'rectangle',
@@ -83,12 +79,6 @@ const SHAPES_2D = [
     perimeter: (p) => 2 * (p.a + p.b),
     areaFormula: 'A = a × b',
     perimeterFormula: 'P = 2(a + b)',
-    draw: (ctx, p, cx, cy, scale) => {
-      const w = p.a * scale;
-      const h = p.b * scale;
-      ctx.beginPath();
-      ctx.rect(cx - w / 2, cy - h / 2, w, h);
-    }
   },
   {
     id: 'square',
@@ -102,11 +92,6 @@ const SHAPES_2D = [
     perimeter: (p) => 4 * p.a,
     areaFormula: 'A = a²',
     perimeterFormula: 'P = 4a',
-    draw: (ctx, p, cx, cy, scale) => {
-      const s = p.a * scale;
-      ctx.beginPath();
-      ctx.rect(cx - s / 2, cy - s / 2, s, s);
-    }
   },
   {
     id: 'circle',
@@ -120,10 +105,6 @@ const SHAPES_2D = [
     perimeter: (p) => 2 * PI * p.r,
     areaFormula: 'A = π × r²',
     perimeterFormula: 'P = 2πr',
-    draw: (ctx, p, cx, cy, scale) => {
-      ctx.beginPath();
-      ctx.arc(cx, cy, p.r * scale, 0, 2 * PI);
-    }
   },
   {
     id: 'trapezoid',
@@ -136,20 +117,12 @@ const SHAPES_2D = [
       { key: 'h', label: 'Altuera (h)', default: 4 },
     ],
     area: (p) => ((p.a + p.b) * p.h) / 2,
-    perimeter: null,
+    perimeter: (p) => {
+      const s = Math.sqrt(p.h * p.h + ((p.a - p.b) / 2) * ((p.a - p.b) / 2));
+      return p.a + p.b + 2 * s;
+    },
     areaFormula: 'A = (a + b) × h / 2',
-    perimeterFormula: null,
-    draw: (ctx, p, cx, cy, scale) => {
-      const aw = p.a * scale;
-      const bw = p.b * scale;
-      const hh = p.h * scale;
-      ctx.beginPath();
-      ctx.moveTo(cx - aw / 2, cy + hh / 2);
-      ctx.lineTo(cx + aw / 2, cy + hh / 2);
-      ctx.lineTo(cx + bw / 2, cy - hh / 2);
-      ctx.lineTo(cx - bw / 2, cy - hh / 2);
-      ctx.closePath();
-    }
+    perimeterFormula: 'P = a + b + 2s (isoszelea)',
   },
   {
     id: 'rhombus',
@@ -161,19 +134,63 @@ const SHAPES_2D = [
       { key: 'd', label: 'Diagonal txikia (d)', default: 5 },
     ],
     area: (p) => (p.D * p.d) / 2,
-    perimeter: null,
+    perimeter: (p) => {
+      const s = Math.sqrt((p.D / 2) * (p.D / 2) + (p.d / 2) * (p.d / 2));
+      return 4 * s;
+    },
     areaFormula: 'A = (D × d) / 2',
-    perimeterFormula: null,
-    draw: (ctx, p, cx, cy, scale) => {
-      const dw = p.D * scale / 2;
-      const dh = p.d * scale / 2;
-      ctx.beginPath();
-      ctx.moveTo(cx, cy - dh);
-      ctx.lineTo(cx + dw, cy);
-      ctx.lineTo(cx, cy + dh);
-      ctx.lineTo(cx - dw, cy);
-      ctx.closePath();
-    }
+    perimeterFormula: 'P = 4s',
+  },
+  {
+    id: 'rhomboid',
+    name: 'Erronboidea',
+    icon: '▱',
+    color: 'orange',
+    params: [
+      { key: 'b', label: 'Oinarria (b)', default: 6 },
+      { key: 'h', label: 'Altuera (h)', default: 4 },
+      { key: 'ang', label: 'Angelua (°)', default: 60, min: 10, max: 170 },
+    ],
+    area: (p) => p.b * p.h,
+    perimeter: (p) => {
+      const angleRad = p.ang * PI / 180;
+      const s = p.h / Math.sin(angleRad);
+      return 2 * (p.b + s);
+    },
+    areaFormula: 'A = b × h',
+    perimeterFormula: 'P = 2(b + s)',
+  },
+  {
+    id: 'pentagon',
+    name: 'Pentagonoa',
+    icon: '⬠',
+    color: 'violet',
+    params: [
+      { key: 'a', label: 'Aldea (a)', default: 5 },
+    ],
+    area: (p) => {
+      const ap = p.a / (2 * Math.tan(PI / 5));
+      return (5 * p.a * ap) / 2;
+    },
+    perimeter: (p) => 5 * p.a,
+    areaFormula: 'A = (P × ap) / 2',
+    perimeterFormula: 'P = 5a',
+  },
+  {
+    id: 'hexagon',
+    name: 'Hexagonoa',
+    icon: '⬡',
+    color: 'teal',
+    params: [
+      { key: 'a', label: 'Aldea (a)', default: 4 },
+    ],
+    area: (p) => {
+      const ap = p.a / (2 * Math.tan(PI / 6));
+      return (6 * p.a * ap) / 2;
+    },
+    perimeter: (p) => 6 * p.a,
+    areaFormula: 'A = (P × ap) / 2',
+    perimeterFormula: 'P = 6a',
   },
 ];
 
@@ -265,70 +282,26 @@ const SHAPES_3D = [
     volumeFormula: 'V = (1/3)a²h',
     surfaceFormula: 'S = a² + 2a·apotema',
   },
+  {
+    id: 'triangularPrism',
+    name: 'Prisma triangeluarra',
+    icon: '🔷',
+    color: 'cyan',
+    params: [
+      { key: 'a', label: 'Oinarriaren aldea (a)', default: 4 },
+      { key: 'h', label: 'Altuera (h)', default: 6 },
+    ],
+    volume: (p) => (Math.sqrt(3) / 4) * p.a * p.a * p.h,
+    surface: (p) => {
+      const triArea = (Math.sqrt(3) / 4) * p.a * p.a;
+      return 2 * triArea + 3 * p.a * p.h;
+    },
+    volumeFormula: 'V = (√3/4)a²h',
+    surfaceFormula: 'S = 2·(√3/4)a² + 3ah',
+  },
 ];
 
-// --- Shape Canvas (2D preview) ---
-
-const ShapeCanvas = ({ shape, params }) => {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || !shape) return;
-    const ctx = canvas.getContext('2d');
-    const w = canvas.width;
-    const h = canvas.height;
-
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, w, h);
-
-    // Grid dots
-    ctx.fillStyle = '#e2e8f0';
-    for (let x = 0; x < w; x += 20) {
-      for (let y = 0; y < h; y += 20) {
-        ctx.fillRect(x, y, 1, 1);
-      }
-    }
-
-    const cx = w / 2;
-    const cy = h / 2;
-    const maxDim = Math.max(...Object.values(params));
-    const scale = Math.min(120 / maxDim, 25);
-
-    // Draw shape
-    shape.draw(ctx, params, cx, cy, scale);
-
-    // Fill
-    const colorMap = {
-      amber: 'rgba(245, 158, 11, 0.15)',
-      blue: 'rgba(59, 130, 246, 0.15)',
-      indigo: 'rgba(99, 102, 241, 0.15)',
-      emerald: 'rgba(16, 185, 129, 0.15)',
-      rose: 'rgba(244, 63, 94, 0.15)',
-      purple: 'rgba(168, 85, 247, 0.15)',
-    };
-    const strokeMap = {
-      amber: '#f59e0b',
-      blue: '#3b82f6',
-      indigo: '#6366f1',
-      emerald: '#10b981',
-      rose: '#f43f5e',
-      purple: '#a855f7',
-    };
-    ctx.fillStyle = colorMap[shape.color] || 'rgba(100,100,100,0.1)';
-    ctx.fill();
-    ctx.strokeStyle = strokeMap[shape.color] || '#666';
-    ctx.lineWidth = 3;
-    ctx.stroke();
-
-  }, [shape, params]);
-
-  if (!shape || !shape.draw) return null;
-
-  return (
-    <canvas ref={canvasRef} width={300} height={250} className="w-full max-w-[300px] h-auto rounded-lg border border-slate-200 bg-white mx-auto" />
-  );
-};
+// ShapeCanvas removed - now using ThreeShapeViewer for 2D shapes too
 
 // --- 2D Calculator ---
 
@@ -369,8 +342,11 @@ const Calculator2D = () => {
 
       {shape && (
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="space-y-4">
-            <ShapeCanvas shape={shape} params={params} />
+          <div>
+            <Suspense fallback={<div className="w-full rounded-xl border border-slate-200 bg-slate-100 flex items-center justify-center" style={{ height: '350px' }}><p className="text-slate-400">3D ikuspegia kargatzen...</p></div>}>
+              <ThreeShapeViewer shapeType={shape.id} params={params} />
+            </Suspense>
+            <p className="text-xs text-slate-400 text-center mt-2">Saguarekin biratu, zooma egin eta mugitu</p>
           </div>
 
           <div className="space-y-4">
@@ -381,14 +357,14 @@ const Calculator2D = () => {
                 <div className="flex items-center gap-3">
                   <input
                     type="range"
-                    min="1"
-                    max="15"
-                    step="0.5"
+                    min={p.min || 1}
+                    max={p.max || 15}
+                    step={p.min ? 1 : 0.5}
                     value={params[p.key] || p.default}
                     onChange={(e) => setParams({ ...params, [p.key]: parseFloat(e.target.value) })}
                     className="flex-1 accent-amber-500 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                   />
-                  <span className="font-mono font-bold w-10 text-right text-slate-700">{params[p.key]}</span>
+                  <span className="font-mono font-bold w-10 text-right text-slate-700">{params[p.key]}{p.key === 'ang' ? '°' : ''}</span>
                 </div>
               </div>
             ))}
@@ -454,38 +430,46 @@ const Calculator3D = () => {
 
       {shape && (
         <div className="space-y-4">
-          {/* Parameters */}
-          <div className="grid md:grid-cols-2 gap-4">
-            {shape.params.map(p => (
-              <div key={p.key}>
-                <label className="text-xs font-bold text-slate-500 uppercase block mb-1">{p.label}</label>
-                <div className="flex items-center gap-3">
-                  <input
-                    type="range"
-                    min="1"
-                    max="15"
-                    step="0.5"
-                    value={params[p.key] || p.default}
-                    onChange={(e) => setParams({ ...params, [p.key]: parseFloat(e.target.value) })}
-                    className={`flex-1 accent-${shape.color}-500 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer`}
-                  />
-                  <span className="font-mono font-bold w-10 text-right text-slate-700">{params[p.key]}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Results */}
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className={`bg-${shape.color}-50 border border-${shape.color}-100 rounded-xl p-5`}>
-              <p className="text-xs font-bold text-slate-400 uppercase mb-1">Bolumena</p>
-              <p className="font-mono text-sm text-slate-600 mb-1">{shape.volumeFormula}</p>
-              <p className={`font-mono text-2xl font-bold text-${shape.color}-700`}>{formatNum(volume)} u³</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* 3D Viewer */}
+            <div>
+              <Suspense fallback={<div className="w-full rounded-xl border border-slate-200 bg-slate-100 flex items-center justify-center" style={{ height: '350px' }}><p className="text-slate-400">3D ikuspegia kargatzen...</p></div>}>
+                <ThreeShapeViewer shapeType={shape.id} params={params} />
+              </Suspense>
+              <p className="text-xs text-slate-400 text-center mt-2">Saguarekin biratu, zooma egin eta mugitu</p>
             </div>
-            <div className={`bg-slate-50 border border-slate-200 rounded-xl p-5`}>
-              <p className="text-xs font-bold text-slate-400 uppercase mb-1">Azalera Osoa</p>
-              <p className="font-mono text-sm text-slate-600 mb-1">{shape.surfaceFormula}</p>
-              <p className="font-mono text-2xl font-bold text-slate-700">{formatNum(surface)} u²</p>
+
+            {/* Parameters */}
+            <div className="space-y-4">
+              {shape.params.map(p => (
+                <div key={p.key}>
+                  <label className="text-xs font-bold text-slate-500 uppercase block mb-1">{p.label}</label>
+                  <div className="flex items-center gap-3">
+                    <input
+                      type="range"
+                      min="1"
+                      max="15"
+                      step="0.5"
+                      value={params[p.key] || p.default}
+                      onChange={(e) => setParams({ ...params, [p.key]: parseFloat(e.target.value) })}
+                      className={`flex-1 accent-${shape.color}-500 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer`}
+                    />
+                    <span className="font-mono font-bold w-10 text-right text-slate-700">{params[p.key]}</span>
+                  </div>
+                </div>
+              ))}
+
+              {/* Results */}
+              <div className={`bg-${shape.color}-50 border border-${shape.color}-100 rounded-xl p-5`}>
+                <p className="text-xs font-bold text-slate-400 uppercase mb-1">Bolumena</p>
+                <p className="font-mono text-sm text-slate-600 mb-1">{shape.volumeFormula}</p>
+                <p className={`font-mono text-2xl font-bold text-${shape.color}-700`}>{formatNum(volume)} u³</p>
+              </div>
+              <div className={`bg-slate-50 border border-slate-200 rounded-xl p-5`}>
+                <p className="text-xs font-bold text-slate-400 uppercase mb-1">Azalera Osoa</p>
+                <p className="font-mono text-sm text-slate-600 mb-1">{shape.surfaceFormula}</p>
+                <p className="font-mono text-2xl font-bold text-slate-700">{formatNum(surface)} u²</p>
+              </div>
             </div>
           </div>
         </div>

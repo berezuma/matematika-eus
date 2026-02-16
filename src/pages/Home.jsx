@@ -277,7 +277,7 @@ const Hero = () => (
 
     <div className="absolute bottom-0 left-0 w-full h-24 bg-slate-50" style={{ clipPath: 'polygon(0 100%, 100% 0, 100% 100%)' }}></div>
 
-    <div className="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+    <div className="container mx-auto px-6 relative z-10 pb-28 grid md:grid-cols-2 gap-12 items-center">
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
@@ -285,7 +285,7 @@ const Hero = () => (
       >
         <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-xs font-bold uppercase tracking-widest">
           <Sparkles className="w-3.5 h-3.5" />
-          Euskaraz · Interaktiboa · Doakoa
+          12-18 urte · Euskaraz · Interaktiboa · Doakoa
         </div>
         <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
           Matematika Ikasi,{' '}
@@ -304,7 +304,7 @@ const Hero = () => (
             Hasi Ikasten <ArrowRight className="w-5 h-5" />
           </a>
           <a href="#about" className="flex items-center justify-center gap-2 text-slate-300 font-semibold py-4 px-8 rounded-lg border border-slate-700 hover:border-slate-500 hover:text-white transition-all">
-            <User className="w-4 h-4" /> Nor naiz ni?
+            <User className="w-4 h-4" /> Nor naiz?
           </a>
         </div>
 
@@ -335,7 +335,7 @@ const Hero = () => (
         {/* Stats row */}
         <div className="flex flex-wrap gap-8">
           {[
-            { value: `${ACTIVE_COUNT}`, label: 'Ikasgai' },
+            { value: `${ACTIVE_COUNT}`, label: 'Gai' },
             { value: '100+', label: 'Ariketa' },
             { value: '%100', label: 'Doakoa' },
           ].map((stat) => (
@@ -530,7 +530,7 @@ const ResourceHub = () => {
         <div className="text-center mb-16">
           <span className="text-indigo-600 font-bold tracking-wider uppercase text-sm mb-2 block">Eduki guztiak</span>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            {ACTIVE_COUNT} Ikasgai
+            {ACTIVE_COUNT} Gai
           </h2>
           <p className="text-slate-600 max-w-2xl mx-auto">
             Aukeratu lantzea nahi duzun arloa. Gai berriak gehitzen ari gara etengabe.
@@ -538,7 +538,7 @@ const ResourceHub = () => {
           {practicedCount > 0 && (
             <Link to="/nire-aurrerapena" className="mt-4 inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-full text-sm font-bold hover:bg-indigo-100 transition-colors">
               <CheckCircle className="w-4 h-4" />
-              {practicedCount} ikasgai landuta — Ikusi aurrerapena
+              {practicedCount} gai landuta — Ikusi aurrerapena
             </Link>
           )}
         </div>
@@ -710,7 +710,7 @@ const Footer = () => {
           </div>
 
           <div className="col-span-1 md:col-span-2">
-            <h4 className="text-white font-bold mb-4 uppercase text-xs tracking-wider">Ikasgaiak</h4>
+            <h4 className="text-white font-bold mb-4 uppercase text-xs tracking-wider">Gaiak</h4>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4 text-sm">
               {CATEGORIES.filter(c => c.id !== 'all').map((cat) => {
                 const topics = activeTopics.filter(t => t.category === cat.id);
@@ -752,7 +752,7 @@ const Footer = () => {
 const AboutMe = () => (
   <section id="about" className="py-24 bg-white">
     <div className="container mx-auto px-6 max-w-3xl text-center">
-      <span className="text-indigo-600 font-bold tracking-wider uppercase text-sm mb-2 block">Nor naiz ni?</span>
+      <span className="text-indigo-600 font-bold tracking-wider uppercase text-sm mb-2 block">Nor naiz?</span>
       <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Beñat Erezuma</h2>
       <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
         <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
