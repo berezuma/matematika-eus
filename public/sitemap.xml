@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://mate.eus/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://mate.eus/diagnostikoa</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <!-- Aljebra -->
+  <url><loc>https://mate.eus/bigarren-mailakoa</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/lehen-mailakoa</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/sistemak-2x2</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/sistemak-3x3</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/polinomioak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/inekuazioak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/produktu-nabarmenak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/matrizeak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <!-- Aritmetika -->
+  <url><loc>https://mate.eus/zatikiak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/zenbaki-osoak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/berreturak-erroak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/proportzionaltasuna</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/zenbaki-sistemak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/eragiketa-konbinatuak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/zatigarritasuna</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/zenbaki-hamartarrak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/logaritmoak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/unitate-aldaketak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/zatiki-sortzailea</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <!-- Geometria -->
+  <url><loc>https://mate.eus/trigonometria</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/bektoreak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/azalerak-bolumenak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/antzekotasuna-tales</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/sistema-sexagesimala</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <!-- Analisia -->
+  <url><loc>https://mate.eus/funtzioak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/deribatuak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/integralak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/estatistika</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/segidak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/limiteak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <!-- Pentsamendu Konputazionala -->
+  <url><loc>https://mate.eus/logika-boolearra</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/algoritmoak</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mate.eus/kriptografia</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <!-- Legalak -->
+  <url><loc>https://mate.eus/lege-oharra</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://mate.eus/pribatutasun-politika</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://mate.eus/lizentzia</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+</urlset>
