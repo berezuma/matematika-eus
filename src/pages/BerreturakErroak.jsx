@@ -579,7 +579,7 @@ export default function BerreturakErroak() {
                     <div className="font-mono font-bold text-emerald-700">
                       {graphBase}<sup>{graphExp}</sup> = {(() => {
                         const r = Math.pow(graphBase, graphExp);
-                        return r % 1 === 0 ? r : r.toFixed(3);
+                        return r % 1 === 0 ? r : r.toFixed(3).replace('.', ',');
                       })()}
                     </div>
                   </div>
@@ -679,7 +679,7 @@ export default function BerreturakErroak() {
                   </div>
                   <p className="text-sm text-slate-600 text-center">Berretzaile negatiboa = <strong>alderantzizkoa</strong></p>
                   <div className="mt-3 font-mono text-xs text-slate-500 text-center space-y-1">
-                    <p>2⁻³ = 1/2³ = 1/8 = 0.125</p>
+                    <p>2⁻³ = 1/2³ = 1/8 = 0,125</p>
                   </div>
                 </div>
                 <div className="p-5 bg-white border border-slate-200 rounded-xl">

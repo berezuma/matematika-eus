@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import RelatedTopics from '../components/RelatedTopics';
+import { formatNumber } from '../utils/formatNumber';
 
 // --- Section Component ---
 
@@ -109,13 +110,7 @@ const convert = (value, fromUnit, toUnit, category) => {
   return result;
 };
 
-const formatNumber = (num) => {
-  if (num === '' || num === undefined || num === null) return '';
-  if (typeof num !== 'number') return num;
-  if (Number.isInteger(num)) return num.toString();
-  // Show up to 6 decimal places, removing trailing zeros
-  return parseFloat(num.toFixed(6)).toString();
-};
+// formatNumber imported from utils/formatNumber.js (europako formatua: koma hamartarretarako)
 
 // --- Staircase Visual Component ---
 
@@ -385,9 +380,9 @@ export default function UnitateAldaketak() {
                   berredura bat adierazten du oinarrizko unitatearen aldean.
                 </p>
 
-                <div className="bg-slate-900 text-white p-8 rounded-2xl shadow-xl text-center">
+                <div className="bg-slate-900 text-white p-8 rounded-2xl shadow-xl text-center overflow-x-auto">
                   <p className="text-sm text-slate-400 uppercase tracking-widest font-bold mb-4">Aurrizkien Eskala</p>
-                  <div className="text-2xl md:text-3xl font-mono font-bold space-x-2">
+                  <div className="text-lg sm:text-2xl md:text-3xl font-mono font-bold space-x-2 whitespace-nowrap min-w-fit">
                     <span className="text-teal-300">kilo</span>
                     <span className="text-slate-500">|</span>
                     <span className="text-teal-400">hecto</span>
@@ -402,7 +397,7 @@ export default function UnitateAldaketak() {
                     <span className="text-slate-500">|</span>
                     <span className="text-emerald-300">mili</span>
                   </div>
-                  <div className="text-xl md:text-2xl font-mono mt-3 text-slate-400">
+                  <div className="text-base sm:text-xl md:text-2xl font-mono mt-3 text-slate-400 whitespace-nowrap min-w-fit">
                     <span>x1000</span>
                     <span className="mx-1">|</span>
                     <span>x100</span>
@@ -420,8 +415,8 @@ export default function UnitateAldaketak() {
                 </div>
 
                 {/* Prefixes table */}
-                <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-                  <table className="w-full text-sm">
+                <div className="bg-white rounded-xl border border-slate-200 overflow-x-auto">
+                  <table className="w-full text-sm min-w-[400px]">
                     <thead>
                       <tr className="bg-teal-50 text-teal-800">
                         <th className="py-3 px-4 text-left font-bold">Aurrizkia</th>

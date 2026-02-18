@@ -273,7 +273,7 @@ const TangentVisualizer = () => {
           <div>
             <div className="flex justify-between mb-1">
               <label className="text-xs font-bold text-red-600 uppercase">Puntua (x)</label>
-              <span className="text-xs font-mono bg-red-100 text-red-700 px-2 rounded font-bold">{xPoint.toFixed(1)}</span>
+              <span className="text-xs font-mono bg-red-100 text-red-700 px-2 rounded font-bold">{xPoint.toFixed(1).replace('.', ',')}</span>
             </div>
             <input
               type="range" min="-4" max="4" step="0.1"
@@ -286,12 +286,12 @@ const TangentVisualizer = () => {
           {/* Values */}
           <div className="space-y-2">
             <div className="bg-red-50 border border-red-100 rounded-lg p-3 flex justify-between items-center">
-              <span className="text-xs font-bold text-red-600">f({xPoint.toFixed(1)})</span>
-              <span className="font-mono font-bold text-red-800">{isNaN(yVal) ? '∄' : yVal.toFixed(3)}</span>
+              <span className="text-xs font-bold text-red-600">f({xPoint.toFixed(1).replace('.', ',')})</span>
+              <span className="font-mono font-bold text-red-800">{isNaN(yVal) ? '∄' : yVal.toFixed(3).replace('.', ',')}</span>
             </div>
             <div className="bg-amber-50 border border-amber-100 rounded-lg p-3 flex justify-between items-center">
-              <span className="text-xs font-bold text-amber-600">f'({xPoint.toFixed(1)}) = malda</span>
-              <span className="font-mono font-bold text-amber-800">{isNaN(slopeVal) ? '∄' : slopeVal.toFixed(3)}</span>
+              <span className="text-xs font-bold text-amber-600">f'({xPoint.toFixed(1).replace('.', ',')}) = malda</span>
+              <span className="font-mono font-bold text-amber-800">{isNaN(slopeVal) ? '∄' : slopeVal.toFixed(3).replace('.', ',')}</span>
             </div>
             <div className="bg-slate-50 border border-slate-200 rounded-lg p-3 text-center text-sm">
               {!isNaN(slopeVal) && isFinite(slopeVal) && (

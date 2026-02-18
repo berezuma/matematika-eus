@@ -471,7 +471,7 @@ export default function ZenbakiOsoak() {
                       <span className="text-slate-500 mx-2">=</span>
                       <span className={`${labResult !== null ? (labResult >= 0 ? 'text-teal-400' : 'text-red-400') : 'text-yellow-400'}`}>
                         {labResult !== null
-                          ? (Number.isInteger(labResult) ? labResult : labResult.toFixed(2))
+                          ? (Number.isInteger(labResult) ? labResult : labResult.toFixed(2).replace('.', ','))
                           : '∄ (ezin da zeroaz zatitu)'
                         }
                       </span>

@@ -130,8 +130,8 @@ const LimitExplorer = () => {
     if (n === undefined || n === null) return '---';
     if (isNaN(n)) return 'Ez dago';
     if (!isFinite(n)) return n > 0 ? '+inf' : '-inf';
-    if (Math.abs(n) < 0.00001 && n !== 0) return n.toExponential(4);
-    return n.toFixed(6);
+    if (Math.abs(n) < 0.00001 && n !== 0) return n.toExponential(4).replace('.', ',');
+    return n.toFixed(6).replace('.', ',');
   };
 
   const formatX = (n) => {
@@ -149,7 +149,7 @@ const LimitExplorer = () => {
       const prev = vals[vals.length - 2].fx;
       if (isNaN(last) || isNaN(prev)) return 'Ez dago';
       if (!isFinite(last)) return last > 0 ? '+inf' : '-inf';
-      if (Math.abs(last - prev) < 0.001) return last.toFixed(4);
+      if (Math.abs(last - prev) < 0.001) return last.toFixed(4).replace('.', ',');
       return '---';
     }
     const leftVals = approach.left;
@@ -160,7 +160,7 @@ const LimitExplorer = () => {
     if (isNaN(lastLeft) || isNaN(lastRight)) return 'Ez dago';
     if (!isFinite(lastLeft) || !isFinite(lastRight)) return 'Ez dago (inf)';
     if (Math.abs(lastLeft - lastRight) < 0.01) {
-      return ((lastLeft + lastRight) / 2).toFixed(4);
+      return ((lastLeft + lastRight) / 2).toFixed(4).replace('.', ',');
     }
     return 'Ez dago (ezker != eskuin)';
   };
@@ -911,7 +911,7 @@ export default function Limiteak() {
                       <p className="text-xs text-slate-500 mt-1">n -&gt; inf</p>
                     </div>
                     <p className="text-sm text-slate-400 mt-4">
-                      e zenbakiaren (Euler-en zenbakia, 2.71828...) definizioa. Hazkuntza esponentzialaren oinarria.
+                      e zenbakiaren (Euler-en zenbakia, 2,71828...) definizioa. Hazkuntza esponentzialaren oinarria.
                     </p>
                   </div>
                 </div>
@@ -1052,7 +1052,7 @@ export default function Limiteak() {
                             disabled={!!feedback}
                             className={`p-4 rounded-xl font-mono font-bold text-lg transition-all ${btnClass} ${!feedback ? 'cursor-pointer' : 'cursor-default'}`}
                           >
-                            {typeof opt === 'number' ? (Number.isInteger(opt) ? opt : opt.toFixed(2)) : opt}
+                            {typeof opt === 'number' ? (Number.isInteger(opt) ? opt : opt.toFixed(2).replace('.', ',')) : opt}
                           </button>
                         );
                       })}

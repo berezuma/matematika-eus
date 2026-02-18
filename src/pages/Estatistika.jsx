@@ -271,11 +271,11 @@ const DatasetVisualizer = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 text-center">
               <p className="text-xs font-bold text-blue-400 uppercase">Batezbestekoa</p>
-              <p className="text-2xl font-mono font-bold text-blue-700">{mean(data).toFixed(2)}</p>
+              <p className="text-2xl font-mono font-bold text-blue-700">{mean(data).toFixed(2).replace('.', ',')}</p>
             </div>
             <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-4 text-center">
               <p className="text-xs font-bold text-emerald-400 uppercase">Mediana</p>
-              <p className="text-2xl font-mono font-bold text-emerald-700">{median(data).toFixed(2)}</p>
+              <p className="text-2xl font-mono font-bold text-emerald-700">{median(data).toFixed(2).replace('.', ',')}</p>
             </div>
             <div className="bg-purple-50 border border-purple-100 rounded-xl p-4 text-center">
               <p className="text-xs font-bold text-purple-400 uppercase">Moda</p>
@@ -283,15 +283,15 @@ const DatasetVisualizer = () => {
             </div>
             <div className="bg-amber-50 border border-amber-100 rounded-xl p-4 text-center">
               <p className="text-xs font-bold text-amber-400 uppercase">Bariantza</p>
-              <p className="text-2xl font-mono font-bold text-amber-700">{variance(data).toFixed(2)}</p>
+              <p className="text-2xl font-mono font-bold text-amber-700">{variance(data).toFixed(2).replace('.', ',')}</p>
             </div>
             <div className="bg-red-50 border border-red-100 rounded-xl p-4 text-center">
               <p className="text-xs font-bold text-red-400 uppercase">Desb. Tipikoa</p>
-              <p className="text-2xl font-mono font-bold text-red-700">{stdDev(data).toFixed(2)}</p>
+              <p className="text-2xl font-mono font-bold text-red-700">{stdDev(data).toFixed(2).replace('.', ',')}</p>
             </div>
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
               <p className="text-xs font-bold text-slate-400 uppercase">Heina</p>
-              <p className="text-2xl font-mono font-bold text-slate-700">{range(data).toFixed(2)}</p>
+              <p className="text-2xl font-mono font-bold text-slate-700">{range(data).toFixed(2).replace('.', ',')}</p>
             </div>
           </div>
         </>
@@ -483,7 +483,7 @@ const DiceSimulator = () => {
         Guztira: {rolls.length} jaurtiketa
         {rolls.length > 0 && (
           <span className="text-slate-500 font-normal ml-2">
-            | Batezbestekoa: {mean(rolls).toFixed(2)} | Mediana: {median(rolls).toFixed(1)}
+            | Batezbestekoa: {mean(rolls).toFixed(2).replace('.', ',')} | Mediana: {median(rolls).toFixed(1).replace('.', ',')}
           </span>
         )}
       </div>
@@ -527,7 +527,7 @@ export default function Estatistika() {
         type,
         display: `Datuak: ${data.join(', ')}\nBatezbestekoa = ?`,
         solution: Math.round(m * 100) / 100,
-        hint: `Batu guztiak: ${data.join(' + ')} = ${data.reduce((a, b) => a + b, 0)}. Zatitu ${len}-z: ${data.reduce((a, b) => a + b, 0)} / ${len} = ${m.toFixed(2)}`
+        hint: `Batu guztiak: ${data.join(' + ')} = ${data.reduce((a, b) => a + b, 0)}. Zatitu ${len}-z: ${data.reduce((a, b) => a + b, 0)} / ${len} = ${m.toFixed(2).replace('.', ',')}`
       };
     } else if (type === 'median') {
       const len = Math.floor(Math.random() * 2) * 2 + 5;
@@ -578,7 +578,7 @@ export default function Estatistika() {
           return {
             display: `Dado bat botatzen dugu.\n${face} ateratzeko probabilitatea? (dezimalekin)`,
             solution: Math.round((1/6) * 1000) / 1000,
-            hint: `Dado batek 6 alde ditu, guztiak berdinak. P(${face}) = 1/6 = ${(1/6).toFixed(3)}`
+            hint: `Dado batek 6 alde ditu, guztiak berdinak. P(${face}) = 1/6 = ${(1/6).toFixed(3).replace('.', ',')}`
           };
         },
         () => {

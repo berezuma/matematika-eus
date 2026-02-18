@@ -132,7 +132,7 @@ function formatMatrixValue(val) {
   // Try to display as fraction-like
   const rounded = Math.round(val * 1000) / 1000;
   if (Math.abs(rounded - Math.round(rounded)) < 0.001) return Math.round(rounded).toString();
-  return rounded.toFixed(2);
+  return rounded.toFixed(2).replace('.', ',');
 }
 
 // --- Main Component ---

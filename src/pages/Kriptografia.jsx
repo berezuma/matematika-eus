@@ -8,15 +8,15 @@ import RelatedTopics from '../components/RelatedTopics';
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 const Section = ({ title, icon: Icon, children, className = "" }) => (
-  <div className={`bg-white rounded-2xl shadow-md p-6 mb-6 ${className}`}>
-    <div className="flex items-center gap-3 mb-4">
-      <div className="bg-sky-100 p-2 rounded-xl">
-        <Icon className="w-6 h-6 text-sky-600" />
+  <section className={`mb-12 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden ${className}`}>
+    <div className="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center gap-3">
+      <div className="p-2 bg-sky-100 text-sky-600 rounded-lg">
+        <Icon size={20} />
       </div>
-      <h2 className="text-xl font-bold text-gray-800">{title}</h2>
+      <h2 className="text-xl font-bold text-slate-800">{title}</h2>
     </div>
-    {children}
-  </div>
+    <div className="p-6">{children}</div>
+  </section>
 );
 
 function shiftChar(char, shift, decode = false) {
@@ -121,60 +121,48 @@ export default function Kriptografia() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white">
-      {/* NAV BAR */}
-      <nav className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-sky-600 font-extrabold text-xl hover:text-sky-700 transition-colors">
-            <KeyRound className="w-7 h-7" />
-            <span>MATE.EUS</span>
+    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-sky-100 selection:text-sky-800">
+
+      {/* Navigation */}
+      <nav className="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">M</div>
+            <span className="font-bold text-lg tracking-tight">Mate<span className="text-indigo-600">.eus</span></span>
           </Link>
-          <div className="flex gap-1 overflow-x-auto">
-            {tabs.map((tab) => {
-              const Icon = tabIcons[tab];
-              return (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${
-                    activeTab === tab
-                      ? 'bg-sky-500 text-white shadow-md shadow-sky-200'
-                      : 'text-gray-600 hover:bg-sky-50 hover:text-sky-600'
-                  }`}
-                >
-                  <Icon className="w-4 h-4" />
-                  {tab}
-                </button>
-              );
-            })}
+          <div className="hidden md:flex gap-6 text-sm font-medium text-slate-600">
+            <button onClick={() => setActiveTab('Teoria')} className={`hover:text-sky-600 transition-colors ${activeTab === 'Teoria' ? 'text-sky-600' : ''}`}>Teoria</button>
+            <button onClick={() => setActiveTab('Laborategia')} className={`hover:text-sky-600 transition-colors ${activeTab === 'Laborategia' ? 'text-sky-600' : ''}`}>Laborategia</button>
+            <button onClick={() => setActiveTab('Formulak')} className={`hover:text-sky-600 transition-colors ${activeTab === 'Formulak' ? 'text-sky-600' : ''}`}>Formulak</button>
+            <button onClick={() => setActiveTab('Praktika')} className="px-4 py-2 bg-sky-600 text-white rounded-full hover:bg-sky-700 transition-all shadow-sm shadow-sky-200">Praktika</button>
           </div>
         </div>
       </nav>
 
-      {/* HERO */}
-      <header className="relative overflow-hidden py-16 text-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-sky-400 to-cyan-500 opacity-10" />
-        <div className="relative max-w-3xl mx-auto px-4">
-          <div className="inline-flex items-center gap-2 bg-sky-100 text-sky-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-            <Lock className="w-4 h-4" />
-            Mezu sekretuak
-          </div>
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-4">
-            <span className="bg-gradient-to-r from-sky-400 to-cyan-500 bg-clip-text text-transparent">
-              Kriptografia
-            </span>
+      <main className="max-w-4xl mx-auto px-4 py-12">
+
+        {/* Hero */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-cyan-500">Kriptografia</span>
           </h1>
-          <p className="text-lg text-gray-600 max-w-xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Ikasi mezuak zifratzeko eta deszifratzeko artea, Zesarren zifratzea oinarri hartuta. Matematikak sekretuak gordetzen laguntzen du!
           </p>
         </div>
-      </header>
 
-      {/* MAIN CONTENT */}
-      <main className="max-w-5xl mx-auto px-4 pb-16">
+        {/* Mobile tabs */}
+        <div className="md:hidden flex overflow-x-auto gap-2 mb-8 pb-2">
+          {tabs.map(t => (
+            <button key={t} onClick={() => setActiveTab(t)}
+              className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap ${activeTab === t ? 'bg-sky-600 text-white' : 'bg-white border border-slate-200 text-slate-600'}`}>
+              {t}
+            </button>
+          ))}
+        </div>
         {/* ======================== TEORIA ======================== */}
         {activeTab === 'Teoria' && (
-          <div className="space-y-6 animate-fadeIn">
+          <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <Section title="Kriptografiaren Historia" icon={BookOpen}>
               <p className="text-gray-700 leading-relaxed mb-4">
                 Kriptografia mezu sekretuak bidaltzeko zientzia eta artea da. Antzinaroan, armadek eta gobernuek erabiltzen zuten
@@ -320,7 +308,7 @@ export default function Kriptografia() {
 
         {/* ======================== LABORATEGIA ======================== */}
         {activeTab === 'Laborategia' && (
-          <div className="space-y-6 animate-fadeIn">
+          <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <Section title="Zesarren Zifratze Tresna" icon={FlaskConical}>
               <p className="text-gray-600 mb-6">
                 Idatzi testu bat, aukeratu desplazamendua eta ikusi nola zifratzen edo deszifratzen den denbora errealean.
@@ -420,7 +408,7 @@ export default function Kriptografia() {
 
         {/* ======================== FORMULAK ======================== */}
         {activeTab === 'Formulak' && (
-          <div className="space-y-6 animate-fadeIn">
+          <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <Section title="Zesarren Zifratzearen Formula" icon={Calculator}>
               <p className="text-gray-700 leading-relaxed mb-6">
                 Zesarren zifratzea matematikoki adieraz daiteke aritmetika modularra erabiliz.
@@ -525,7 +513,7 @@ export default function Kriptografia() {
 
         {/* ======================== PRAKTIKA ======================== */}
         {activeTab === 'Praktika' && (
-          <div className="space-y-6 animate-fadeIn">
+          <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <Section title="Puntuazioa" icon={Zap}>
               <div className="flex items-center gap-6">
                 <div className="text-center">
@@ -649,28 +637,9 @@ export default function Kriptografia() {
         )}
       </main>
 
-      {/* FOOTER */}
       <RelatedTopics currentId="kriptografia" />
-      <footer className="bg-gray-900 text-gray-400 py-8">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <p className="text-sm">
-            <a
-              href="https://mate.eus"
-              className="text-sky-400 hover:text-sky-300 transition-colors font-semibold"
-            >
-              Mate.eus
-            </a>{' '}
-            &copy; 2026. Egilea:{' '}
-            <a
-              href="https://berezuma.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sky-400 hover:text-sky-300 transition-colors"
-            >
-              Beñat Erezuma
-            </a>
-          </p>
-        </div>
+      <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
+        <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-sky-500">Beñat Erezuma</a></p>
       </footer>
     </div>
   );

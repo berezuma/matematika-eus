@@ -517,7 +517,7 @@ export default function LehenMailakoa() {
                           <div className="text-xs text-red-500 uppercase font-bold mb-1">Erroa (x)</div>
                           <div className="font-mono font-bold text-red-700 text-lg">
                               {graphParams.a !== 0
-                                ? `x = ${((-graphParams.b / graphParams.a) % 1 === 0) ? -graphParams.b / graphParams.a : (-graphParams.b / graphParams.a).toFixed(2)}`
+                                ? `x = ${((-graphParams.b / graphParams.a) % 1 === 0) ? -graphParams.b / graphParams.a : (-graphParams.b / graphParams.a).toFixed(2).replace('.', ',')}`
                                 : '∄'
                               }
                           </div>

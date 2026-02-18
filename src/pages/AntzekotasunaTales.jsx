@@ -67,7 +67,7 @@ const TrianglePair = ({ a, b, c, aPrime, bPrime, cPrime, k }) => {
 
       {/* Scale factor label */}
       <text x={svgWidth / 2} y={20} textAnchor="middle" className="text-sm font-bold" fill="#d97706">
-        k = {k.toFixed(2)}
+        k = {k.toFixed(2).replace('.', ',')}
       </text>
     </svg>
   );
@@ -545,7 +545,7 @@ export default function AntzekotasunaTales() {
                     <div className="bg-slate-900 text-white p-6 rounded-xl text-center">
                       <p className="text-sm text-slate-400 uppercase tracking-widest font-bold mb-2">Eskala-Faktorea</p>
                       <p className="text-4xl font-mono font-bold text-amber-400">
-                        k = {isFinite(calculatedK) ? calculatedK.toFixed(2) : '---'}
+                        k = {isFinite(calculatedK) ? calculatedK.toFixed(2).replace('.', ',') : '---'}
                       </p>
                       <p className="text-xs text-slate-400 mt-2">k = a' / a = {sideAPrime} / {sideA}</p>
                     </div>
@@ -559,11 +559,11 @@ export default function AntzekotasunaTales() {
                           <span className="font-mono font-bold text-orange-600">{sideAPrime}</span>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-amber-50 rounded-lg border border-amber-100">
-                          <span className="text-sm text-slate-600">b' = b x k = {sideB} x {calculatedK.toFixed(2)}</span>
+                          <span className="text-sm text-slate-600">b' = b x k = {sideB} x {calculatedK.toFixed(2).replace('.', ',')}</span>
                           <span className="font-mono font-bold text-amber-600">{isFinite(calculatedBPrime) ? calculatedBPrime : '---'}</span>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-amber-50 rounded-lg border border-amber-100">
-                          <span className="text-sm text-slate-600">c' = c x k = {sideC} x {calculatedK.toFixed(2)}</span>
+                          <span className="text-sm text-slate-600">c' = c x k = {sideC} x {calculatedK.toFixed(2).replace('.', ',')}</span>
                           <span className="font-mono font-bold text-amber-600">{isFinite(calculatedCPrime) ? calculatedCPrime : '---'}</span>
                         </div>
                       </div>
@@ -573,7 +573,7 @@ export default function AntzekotasunaTales() {
                     <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-center">
                       <p className="text-xs font-bold text-green-700 uppercase tracking-widest mb-2">Proportzioa Egiaztatuta</p>
                       <p className="font-mono text-sm text-green-800">
-                        {sideA > 0 ? (sideAPrime / sideA).toFixed(2) : '---'} = {sideB > 0 ? (calculatedBPrime / sideB).toFixed(2) : '---'} = {sideC > 0 ? (calculatedCPrime / sideC).toFixed(2) : '---'} = <span className="font-bold text-green-600">k</span>
+                        {sideA > 0 ? (sideAPrime / sideA).toFixed(2).replace('.', ',') : '---'} = {sideB > 0 ? (calculatedBPrime / sideB).toFixed(2).replace('.', ',') : '---'} = {sideC > 0 ? (calculatedCPrime / sideC).toFixed(2).replace('.', ',') : '---'} = <span className="font-bold text-green-600">k</span>
                       </p>
                     </div>
                   </div>

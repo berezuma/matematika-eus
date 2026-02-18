@@ -86,7 +86,8 @@ const inverse2x2 = (m) => {
 
 const formatNum = (n) => {
   if (Number.isInteger(n)) return n.toString();
-  return n % 1 === 0 ? n.toString() : n.toFixed(2);
+  if (n % 1 === 0) return n.toString();
+  return n.toFixed(2).replace('.', ',');
 };
 
 // --- Matrix Input Component ---

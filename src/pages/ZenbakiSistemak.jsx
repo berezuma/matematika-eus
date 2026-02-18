@@ -9,6 +9,7 @@ import {
   ArrowRight,
   AlertTriangle,
   Binary,
+  Calculator,
   Cpu,
   Wifi,
   Palette,

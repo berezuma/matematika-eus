@@ -260,7 +260,7 @@ export default function Sistemak2x2() {
 
   const formatNum = (n) => {
     if (n === null) return '∄';
-    return n % 1 === 0 ? n : n.toFixed(2);
+    return n % 1 === 0 ? n : n.toFixed(2).replace('.', ',');
   };
 
   return (

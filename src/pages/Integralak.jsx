@@ -328,17 +328,17 @@ const AreaVisualizer = () => {
             {showRiemann && (
               <div className="bg-red-50 border border-red-100 rounded-lg p-3 flex justify-between items-center">
                 <span className="text-xs font-bold text-red-600">Riemann batura</span>
-                <span className="font-mono font-bold text-red-800">{riemannSum.toFixed(4)}</span>
+                <span className="font-mono font-bold text-red-800">{riemannSum.toFixed(4).replace('.', ',')}</span>
               </div>
             )}
             <div className="bg-emerald-50 border border-emerald-100 rounded-lg p-3 flex justify-between items-center">
               <span className="text-xs font-bold text-emerald-600">∫ zehatza</span>
-              <span className="font-mono font-bold text-emerald-800">{isNaN(exactArea) ? '∄' : exactArea.toFixed(4)}</span>
+              <span className="font-mono font-bold text-emerald-800">{isNaN(exactArea) ? '∄' : exactArea.toFixed(4).replace('.', ',')}</span>
             </div>
             {showRiemann && !isNaN(exactArea) && (
               <div className="bg-amber-50 border border-amber-100 rounded-lg p-3 flex justify-between items-center">
                 <span className="text-xs font-bold text-amber-600">Errorea</span>
-                <span className="font-mono font-bold text-amber-800">{Math.abs(riemannSum - exactArea).toFixed(4)}</span>
+                <span className="font-mono font-bold text-amber-800">{Math.abs(riemannSum - exactArea).toFixed(4).replace('.', ',')}</span>
               </div>
             )}
           </div>
@@ -384,7 +384,7 @@ export default function Integralak() {
         type,
         display: `∫ ${a === 1 ? '' : a}x${toSup(n)} dx = k·x${toSup(n + 1)} + C\nk = ? (zatiki gisa: zenbakitzailea / izendatzailea)`,
         solution: Math.round(coeff * 1000) / 1000,
-        hint: `∫ ${a}x${toSup(n)} dx = ${a}·x${toSup(n + 1)}/${n + 1} + C = ${a}/${n + 1}·x${toSup(n + 1)} + C. k = ${a}/${n + 1} = ${coeff.toFixed(3)}`
+        hint: `∫ ${a}x${toSup(n)} dx = ${a}·x${toSup(n + 1)}/${n + 1} + C = ${a}/${n + 1}·x${toSup(n + 1)} + C. k = ${a}/${n + 1} = ${coeff.toFixed(3).replace('.', ',')}`
       };
     } else if (type === 'definite') {
       // ∫₀ᵇ x dx = b²/2
@@ -563,7 +563,7 @@ export default function Integralak() {
                     <p className="text-sm text-slate-600 mb-3">Azalera kalkulatzeko, jatorrizkoa ebaluatu mugetan.</p>
                     <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-sm text-center">
                       <p>∫₀² x² dx = [x³/3]₀² </p>
-                      <p>= 8/3 - 0 = <strong className="text-emerald-700">2.667</strong></p>
+                      <p>= 8/3 - 0 = <strong className="text-emerald-700">2,667</strong></p>
                     </div>
                   </div>
                 </div>
@@ -634,8 +634,8 @@ export default function Integralak() {
                   { name: 'Berretura', formula: '∫ xⁿ dx = xⁿ⁺¹/(n+1) + C', example: '∫ x³ dx = x⁴/4 + C', color: 'red' },
                   { name: 'Koefizientea', formula: '∫ k·f dx = k · ∫ f dx', example: '∫ 3x² dx = 3 · x³/3 = x³ + C', color: 'orange' },
                   { name: 'Batuketa', formula: '∫ (f + g) dx = ∫ f dx + ∫ g dx', example: '∫ (x² + x) dx = x³/3 + x²/2 + C', color: 'amber' },
-                  { name: '1/x', formula: '∫ 1/x dx = ln|x| + C', example: '∫₁² 1/x dx = ln 2 ≈ 0.693', color: 'yellow' },
-                  { name: 'Esponentziala', formula: '∫ eˣ dx = eˣ + C', example: '∫₀¹ eˣ dx = e - 1 ≈ 1.718', color: 'lime' },
+                  { name: '1/x', formula: '∫ 1/x dx = ln|x| + C', example: '∫₁² 1/x dx = ln 2 ≈ 0,693', color: 'yellow' },
+                  { name: 'Esponentziala', formula: '∫ eˣ dx = eˣ + C', example: '∫₀¹ eˣ dx = e - 1 ≈ 1,718', color: 'lime' },
                 ].map((r, i) => (
                   <div key={i} className={`p-4 rounded-xl bg-${r.color}-50 border border-${r.color}-100 hover:border-${r.color}-300 transition-colors`}>
                     <div className="flex flex-col md:flex-row md:items-center gap-3">

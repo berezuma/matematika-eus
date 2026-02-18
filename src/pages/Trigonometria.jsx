@@ -257,23 +257,23 @@ const UnitCircle = () => {
         <div className="space-y-2">
           <div className="bg-blue-50 border border-blue-100 rounded-lg p-3 flex justify-between items-center">
             <span className="text-xs font-bold text-blue-600 uppercase">cos({angleDeg}°)</span>
-            <span className="font-mono font-bold text-blue-800">{cosVal.toFixed(4)}</span>
+            <span className="font-mono font-bold text-blue-800">{cosVal.toFixed(4).replace('.', ',')}</span>
           </div>
           <div className="bg-red-50 border border-red-100 rounded-lg p-3 flex justify-between items-center">
             <span className="text-xs font-bold text-red-600 uppercase">sin({angleDeg}°)</span>
-            <span className="font-mono font-bold text-red-800">{sinVal.toFixed(4)}</span>
+            <span className="font-mono font-bold text-red-800">{sinVal.toFixed(4).replace('.', ',')}</span>
           </div>
           <div className="bg-emerald-50 border border-emerald-100 rounded-lg p-3 flex justify-between items-center">
             <span className="text-xs font-bold text-emerald-600 uppercase">tan({angleDeg}°)</span>
             <span className="font-mono font-bold text-emerald-800">
-              {Math.abs(cosVal) < 0.001 ? '±∞' : tanVal.toFixed(4)}
+              {Math.abs(cosVal) < 0.001 ? '±∞' : tanVal.toFixed(4).replace('.', ',')}
             </span>
           </div>
         </div>
 
         <div className="p-3 bg-amber-50 border border-amber-100 rounded-lg text-xs text-amber-800">
           <strong>Radianetan:</strong>{' '}
-          <span className="font-mono">{(angleRad).toFixed(4)} rad</span>
+          <span className="font-mono">{(angleRad).toFixed(4).replace('.', ',')} rad</span>
           {angleDeg % 180 === 0 && angleDeg !== 0 && <span> = {angleDeg / 180}π</span>}
           {angleDeg % 90 === 0 && angleDeg % 180 !== 0 && <span> = {angleDeg / 90}π/2</span>}
         </div>

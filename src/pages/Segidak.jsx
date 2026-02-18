@@ -53,7 +53,7 @@ const geometricSum = (a1, r, n) => {
 const formatNum = (n) => {
   if (Number.isNaN(n) || !Number.isFinite(n)) return '---';
   if (Number.isInteger(n)) return n.toString();
-  return n.toFixed(2);
+  return n.toFixed(2).replace('.', ',');
 };
 
 // --- Sequence Visualizer (Bar Chart) ---
@@ -825,7 +825,7 @@ export default function Segidak() {
                   </div>
                   <div className="text-sm text-slate-600 bg-purple-50 p-4 rounded-lg border border-purple-100">
                     <p className="mb-2"><strong className="text-purple-700">Baldintza:</strong> Arrazoi absolutuaren balioa 1 baino txikiagoa izan behar da (|r| {'<'} 1) batura infinitua konbergentea izan dadin.</p>
-                    <p><strong>Adibidea:</strong> a<sub>1</sub> = 4, r = 1/2 {'\u2192'} S<sub>{'\u221E'}</sub> = 4 / (1 - 0.5) = 4 / 0.5 = <strong className="text-purple-700">8</strong></p>
+                    <p><strong>Adibidea:</strong> a<sub>1</sub> = 4, r = 1/2 {'\u2192'} S<sub>{'\u221E'}</sub> = 4 / (1 - 0,5) = 4 / 0,5 = <strong className="text-purple-700">8</strong></p>
                   </div>
                 </div>
               </div>

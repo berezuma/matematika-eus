@@ -104,7 +104,7 @@ const FractionVisualizer = () => {
           <div className="mt-6 flex items-center gap-4">
              <div className="text-3xl font-bold font-mono text-slate-800">{num}/{den}</div>
              <div className="text-sm font-bold bg-white px-3 py-1 rounded border border-slate-200 text-slate-500">
-                {percentage.toFixed(1)}%
+                {percentage.toFixed(1).replace('.', ',')}%
              </div>
           </div>
        </div>

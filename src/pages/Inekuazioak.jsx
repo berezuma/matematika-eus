@@ -6,13 +6,15 @@ import useDocumentTitle from '../hooks/useDocumentTitle';
 import RelatedTopics from '../components/RelatedTopics';
 
 const Section = ({ title, icon: Icon, children, className = "" }) => (
-  <div className={`bg-white rounded-2xl shadow-md overflow-hidden ${className}`}>
-    <div className="bg-indigo-100 px-6 py-4 flex items-center gap-3">
-      {Icon && <Icon className="w-6 h-6 text-indigo-600" />}
-      <h3 className="text-xl font-bold text-indigo-600">{title}</h3>
+  <section className={`mb-12 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden ${className}`}>
+    <div className="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center gap-3">
+      <div className="p-2 bg-indigo-100 text-indigo-600 rounded-lg">
+        {Icon && <Icon size={20} />}
+      </div>
+      <h2 className="text-xl font-bold text-slate-800">{title}</h2>
     </div>
     <div className="p-6">{children}</div>
-  </div>
+  </section>
 );
 
 export default function Inekuazioak() {
@@ -707,78 +709,54 @@ export default function Inekuazioak() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white">
+    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-indigo-100 selection:text-indigo-800">
+
       {/* Navigation */}
-      <nav className="bg-white shadow-sm border-b border-indigo-100 sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="bg-indigo-500 rounded-lg p-2 group-hover:bg-indigo-600 transition-colors">
-              <Sigma className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-xl font-bold text-gray-800">
-              MATE<span className="text-indigo-500">.EUS</span>
-            </span>
+      <nav className="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">M</div>
+            <span className="font-bold text-lg tracking-tight">Mate<span className="text-indigo-600">.eus</span></span>
           </Link>
+          <div className="hidden md:flex gap-6 text-sm font-medium text-slate-600">
+            <button onClick={() => setActiveTab('Teoria')} className={`hover:text-indigo-600 transition-colors ${activeTab === 'Teoria' ? 'text-indigo-600' : ''}`}>Teoria</button>
+            <button onClick={() => setActiveTab('Laborategia')} className={`hover:text-indigo-600 transition-colors ${activeTab === 'Laborategia' ? 'text-indigo-600' : ''}`}>Laborategia</button>
+            <button onClick={() => setActiveTab('Formulak')} className={`hover:text-indigo-600 transition-colors ${activeTab === 'Formulak' ? 'text-indigo-600' : ''}`}>Formulak</button>
+            <button onClick={() => setActiveTab('Praktika')} className="px-4 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-all shadow-sm shadow-indigo-200">Praktika</button>
+          </div>
         </div>
       </nav>
 
-      {/* Hero */}
-      <header className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-16">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h1 className="text-4xl sm:text-5xl font-extrabold mb-4">
+      <main className="max-w-4xl mx-auto px-4 py-12">
+
+        {/* Hero */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight">
             Inekuazioak eta{' '}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-200 to-purple-200">
-              Tarteak
-            </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">Tarteak</span>
           </h1>
-          <p className="text-indigo-100 text-lg max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Ikasi inekuazioak ebazten, tarteak ulertzen eta zenbaki-zuzenean irudikatzen.
           </p>
         </div>
-      </header>
 
-      {/* Tabs */}
-      <div className="max-w-6xl mx-auto px-4 -mt-6">
-        <div className="bg-white rounded-2xl shadow-lg p-2 flex flex-wrap gap-2">
-          {tabs.map((tab) => {
-            const Icon = tabIcons[tab];
-            return (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`flex-1 min-w-[120px] flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-semibold transition-all ${
-                  activeTab === tab
-                    ? 'bg-indigo-500 text-white shadow-md'
-                    : 'text-gray-600 hover:bg-indigo-50 hover:text-indigo-600'
-                }`}
-              >
-                <Icon className="w-4 h-4" />
-                {tab}
-              </button>
-            );
-          })}
+        {/* Mobile tabs */}
+        <div className="md:hidden flex overflow-x-auto gap-2 mb-8 pb-2">
+          {tabs.map(t => (
+            <button key={t} onClick={() => setActiveTab(t)}
+              className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap ${activeTab === t ? 'bg-indigo-600 text-white' : 'bg-white border border-slate-200 text-slate-600'}`}>
+              {t}
+            </button>
+          ))}
         </div>
-      </div>
 
-      {/* Main content */}
-      <main className="max-w-6xl mx-auto px-4 py-10">{renderContent()}</main>
+        {renderContent()}
 
-      {/* Footer */}
+      </main>
+
       <RelatedTopics currentId="inekuazioak" />
-      <footer className="bg-gray-900 text-gray-400 py-8 mt-12">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <p className="text-sm">
-            Mate.eus &copy; 2026. Egilea:{' '}
-            <a
-              href="https://berezuma.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-indigo-400 hover:text-indigo-300 transition-colors"
-            >
-              Be&ntilde;at Erezuma
-            </a>
-          </p>
-        </div>
+      <footer className="max-w-4xl mx-auto px-4 py-8 text-center text-slate-400 text-sm">
+        <p>Mate.eus &copy; 2026. Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-500">Beñat Erezuma</a></p>
       </footer>
     </div>
   );

@@ -50,7 +50,7 @@ const vecAngle = (a) => {
   return deg < 0 ? deg + 360 : deg;
 };
 
-const formatNum = (n) => (Number.isInteger(n) ? n.toString() : n.toFixed(2));
+const formatNum = (n) => (Number.isInteger(n) ? n.toString() : n.toFixed(2).replace('.', ','));
 
 // --- Interactive Vector Canvas ---
 

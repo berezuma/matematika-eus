@@ -41,7 +41,8 @@ const Section = ({ title, icon: Icon, children, className = "" }) => (
 
 const formatNum = (n) => {
   if (n === undefined || n === null || isNaN(n)) return '—';
-  return Number.isInteger(n) ? n.toString() : n.toFixed(2);
+  if (Number.isInteger(n)) return n.toString();
+  return n.toFixed(2).replace('.', ',');
 };
 
 const PI = Math.PI;
@@ -525,9 +526,9 @@ export default function AzalerakBolumenak() {
       const r = randInt(1, 8);
       const area = Math.round(PI * r * r * 100) / 100;
       prob = {
-        type, display: `Zirkulua: r = ${r}\n\nAzalera = ? (π = 3.14 erabili)`,
+        type, display: `Zirkulua: r = ${r}\n\nAzalera = ? (π = 3,14 erabili)`,
         solution: Math.round(3.14 * r * r * 100) / 100,
-        hint: `A = π×r² = 3.14×${r}² = 3.14×${r * r} = ${(3.14 * r * r).toFixed(2)}`
+        hint: `A = π×r² = 3,14×${r}² = 3,14×${r * r} = ${(3.14 * r * r).toFixed(2).replace('.', ',')}`
       };
     } else if (type === 'cube_vol') {
       const a = randInt(2, 8);
@@ -540,18 +541,18 @@ export default function AzalerakBolumenak() {
       const r = randInt(1, 5);
       const vol = Math.round((4 / 3) * 3.14 * r * r * r * 100) / 100;
       prob = {
-        type, display: `Esfera: r = ${r}\n\nBolumena = ? (π = 3.14 erabili)`,
+        type, display: `Esfera: r = ${r}\n\nBolumena = ? (π = 3,14 erabili)`,
         solution: vol,
-        hint: `V = (4/3)πr³ = (4/3)×3.14×${r}³ = ${vol}`
+        hint: `V = (4/3)πr³ = (4/3)×3,14×${r}³ = ${vol.toString().replace('.', ',')}`
       };
     } else {
       const r = randInt(1, 5);
       const h = randInt(2, 10);
       const vol = Math.round(3.14 * r * r * h * 100) / 100;
       prob = {
-        type, display: `Zilindroa: r = ${r}, h = ${h}\n\nBolumena = ? (π = 3.14 erabili)`,
+        type, display: `Zilindroa: r = ${r}, h = ${h}\n\nBolumena = ? (π = 3,14 erabili)`,
         solution: vol,
-        hint: `V = πr²h = 3.14×${r}²×${h} = 3.14×${r * r}×${h} = ${vol}`
+        hint: `V = πr²h = 3,14×${r}²×${h} = 3,14×${r * r}×${h} = ${vol.toString().replace('.', ',')}`
       };
     }
 
@@ -806,7 +807,7 @@ export default function AzalerakBolumenak() {
                           className="w-32 text-center p-3 border-2 border-slate-200 rounded-xl focus:border-amber-500 focus:outline-none transition-colors text-lg font-bold"
                         />
                       </div>
-                      <p className="text-xs text-slate-400">Erantzun dezimalekin: erabili π = 3.14</p>
+                      <p className="text-xs text-slate-400">Erantzun dezimalekin: erabili π = 3,14</p>
                     </div>
 
                     {feedback && (

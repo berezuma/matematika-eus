@@ -151,7 +151,7 @@ const NumberLine = ({ value }) => {
     ctx.fillStyle = '#059669';
     ctx.font = 'bold 14px monospace';
     ctx.textAlign = 'center';
-    ctx.fillText(val.toString(), px, lineY - 16);
+    ctx.fillText(val.toString().replace('.', ','), px, lineY - 16);
   }, [value]);
 
   return <canvas ref={canvasRef} width={500} height={80} className="w-full h-auto rounded-lg border border-slate-200 bg-white" />;
@@ -183,7 +183,7 @@ export default function ZenbakiHamartarrak() {
       const den = [2, 4, 5, 8, 10, 20, 25, 50][randInt(0, 7)];
       const num = randInt(1, den - 1);
       const g = gcd(num, den);
-      const decimal = (num / den).toString();
+      const decimal = (num / den).toString().replace('.', ',');
       setPracticeProblem({
         display: decimal,
         solutionNum: num / g,
@@ -278,27 +278,27 @@ export default function ZenbakiHamartarrak() {
                   <h3 className="font-bold text-emerald-800 mb-2">Zehatzak</h3>
                   <p className="text-sm text-emerald-700 mb-3">Dezimal kopuru mugatu bat dute. Bukaeran amaitzen dira.</p>
                   <div className="bg-white p-3 rounded-lg border border-emerald-200 font-mono text-sm space-y-1">
-                    <p>0.5 = 1/2</p>
-                    <p>0.75 = 3/4</p>
-                    <p>1.25 = 5/4</p>
+                    <p>0,5 = 1/2</p>
+                    <p>0,75 = 3/4</p>
+                    <p>1,25 = 5/4</p>
                   </div>
                 </div>
                 <div className="p-5 rounded-xl bg-teal-50 border border-teal-100">
                   <h3 className="font-bold text-teal-800 mb-2">Aldizkako puruak</h3>
                   <p className="text-sm text-teal-700 mb-3">Koma ondoren, zifra-talde bat behin eta berriz errepikatzen da.</p>
                   <div className="bg-white p-3 rounded-lg border border-teal-200 font-mono text-sm space-y-1">
-                    <p>0.333... = 1/3</p>
-                    <p>0.666... = 2/3</p>
-                    <p>0.142857... = 1/7</p>
+                    <p>0,333... = 1/3</p>
+                    <p>0,666... = 2/3</p>
+                    <p>0,142857... = 1/7</p>
                   </div>
                 </div>
                 <div className="p-5 rounded-xl bg-cyan-50 border border-cyan-100">
                   <h3 className="font-bold text-cyan-800 mb-2">Aldizkako nahasteak</h3>
                   <p className="text-sm text-cyan-700 mb-3">Koma ondoren zifra finkoak eta gero zifra errepikakorrak daude.</p>
                   <div className="bg-white p-3 rounded-lg border border-cyan-200 font-mono text-sm space-y-1">
-                    <p>0.1666... = 1/6</p>
-                    <p>0.8333... = 5/6</p>
-                    <p>0.41666... = 5/12</p>
+                    <p>0,1666... = 1/6</p>
+                    <p>0,8333... = 5/6</p>
+                    <p>0,41666... = 5/12</p>
                   </div>
                 </div>
               </div>
@@ -309,7 +309,7 @@ export default function ZenbakiHamartarrak() {
                 <div className="bg-slate-900 text-white p-6 rounded-2xl">
                   <p className="text-slate-400 text-xs uppercase tracking-widest mb-4 text-center">Hamartar zehatza → Zatikia</p>
                   <div className="font-mono text-center space-y-2">
-                    <p className="text-2xl">0.75</p>
+                    <p className="text-2xl">0,75</p>
                     <p className="text-slate-400">= 75/100</p>
                     <p className="text-emerald-400 font-bold text-xl">= 3/4</p>
                   </div>
@@ -327,18 +327,18 @@ export default function ZenbakiHamartarrak() {
                   <h3 className="font-bold text-slate-800 mb-2">Batuketa / Kenketa</h3>
                   <p className="text-sm text-slate-600 mb-3">Komak lerrokatu eta arrunt egin.</p>
                   <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-sm">
-                    <p>&nbsp;&nbsp;3.45</p>
-                    <p>+ 2.30</p>
-                    <p className="border-t border-slate-300 font-bold text-emerald-600">&nbsp;&nbsp;5.75</p>
+                    <p>&nbsp;&nbsp;3,45</p>
+                    <p>+ 2,30</p>
+                    <p className="border-t border-slate-300 font-bold text-emerald-600">&nbsp;&nbsp;5,75</p>
                   </div>
                 </div>
                 <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
                   <h3 className="font-bold text-slate-800 mb-2">Biderketa</h3>
                   <p className="text-sm text-slate-600 mb-3">Biderkatu komak kontuan hartu gabe, gero jarri koma.</p>
                   <div className="bg-white p-3 rounded-lg border border-slate-200 font-mono text-sm">
-                    <p>2.3 × 1.5</p>
+                    <p>2,3 × 1,5</p>
                     <p className="text-slate-400">23 × 15 = 345</p>
-                    <p className="text-emerald-600 font-bold">2 dezimal → 3.45</p>
+                    <p className="text-emerald-600 font-bold">2 dezimal → 3,45</p>
                   </div>
                 </div>
               </div>
@@ -355,9 +355,9 @@ export default function ZenbakiHamartarrak() {
                   <label className="text-sm font-bold text-slate-500 uppercase mb-2 block">Sartu hamartar bat</label>
                   <input type="text" value={labInput}
                     onChange={(e) => setLabInput(e.target.value)}
-                    placeholder="Adib: 0.75 edo 0.333..."
+                    placeholder="Adib: 0,75 edo 0,333..."
                     className="w-full p-3 border-2 border-slate-200 rounded-xl focus:border-emerald-500 focus:outline-none transition-colors font-mono text-lg" />
-                  <p className="text-xs text-slate-400 mt-2">Aldizkakoentzat gehitu &quot;...&quot; bukaeran (adib: 0.333...)</p>
+                  <p className="text-xs text-slate-400 mt-2">Aldizkakoentzat gehitu &quot;...&quot; bukaeran (adib: 0,333...)</p>
                 </div>
 
                 <div className="bg-slate-900 text-white p-6 rounded-2xl">
@@ -370,7 +370,7 @@ export default function ZenbakiHamartarrak() {
                       <div className="space-y-2">
                         {labResult.steps.map((step, i) => (
                           <p key={i} className={`font-mono text-sm ${i === labResult.steps.length - 1 ? 'text-emerald-400 font-bold' : 'text-slate-300'}`}>
-                            {i > 0 && '→ '}{step}
+                            {i > 0 && '→ '}{step.replace(/(\d)\.(\d)/g, '$1,$2')}
                           </p>
                         ))}
                       </div>
@@ -389,7 +389,7 @@ export default function ZenbakiHamartarrak() {
                   {['0.5', '0.75', '0.125', '0.333...'].map(val => (
                     <button key={val} onClick={() => setLabInput(val)}
                       className="p-3 bg-slate-100 rounded-lg text-sm font-mono text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 border border-slate-200 hover:border-emerald-300 transition-colors">
-                      {val}
+                      {val.replace('.', ',')}
                     </button>
                   ))}
                 </div>
@@ -515,7 +515,7 @@ export default function ZenbakiHamartarrak() {
                              feedback === 'invalid' ? 'Mesedez, sartu balio egokiak.' :
                              practiceType === 'toFraction'
                                ? `Ia-ia... Erantzun zuzena: ${practiceProblem.solutionNum}/${practiceProblem.solutionDen}`
-                               : `Ia-ia... Erantzun zuzena: ${practiceProblem.solution}`}
+                               : `Ia-ia... Erantzun zuzena: ${String(practiceProblem.solution).replace('.', ',')}`}
                           </span>
                         </div>
                       </div>

@@ -234,7 +234,7 @@ export default function Logaritmoak() {
   const formatNumber = (n) => {
     if (isNaN(n) || !isFinite(n)) return '?';
     if (Number.isInteger(n)) return n.toString();
-    return n.toFixed(4);
+    return n.toFixed(4).replace('.', ',');
   };
 
   // --- Practice Problem Generator ---
@@ -559,7 +559,7 @@ export default function Logaritmoak() {
                     </div>
                     <h3 className="font-bold text-slate-800 mb-2">Logaritmo nepertarra (ln)</h3>
                     <p className="text-sm text-slate-600">
-                      <strong>ln(x)</strong> idazten denean, oinarria <strong>e ≈ 2.71828</strong> da (Euler-en zenbakia).
+                      <strong>ln(x)</strong> idazten denean, oinarria <strong>e ≈ 2,71828</strong> da (Euler-en zenbakia).
                       Zientzian eta matematika aurreratuan oso garrantzitsua. Adib.: ln(e) = 1.
                     </p>
                   </div>
@@ -887,7 +887,7 @@ export default function Logaritmoak() {
                     <div className="bg-white p-4 rounded-lg border border-slate-200">
                       <p className="text-xs text-purple-600 font-bold uppercase mb-2">Adibidea</p>
                       <p className="font-mono text-sm text-slate-700">
-                        log₂(10) = log₁₀(10) / log₁₀(2) = 1 / 0.3010 ≈ <strong>3.3219</strong>
+                        log₂(10) = log₁₀(10) / log₁₀(2) = 1 / 0,3010 ≈ <strong>3,3219</strong>
                       </p>
                       <p className="font-mono text-sm text-slate-500 mt-1">
                         Kalkulagailuan log edo ln erabiliz edozein oinarrirako kalkulatu dezakezu

@@ -450,7 +450,7 @@ export default function BigarrenMailakoa() {
                       <div className="p-3 bg-red-50 border border-red-100 rounded-lg text-center">
                           <div className="text-xs text-red-500 uppercase font-bold mb-1">Diskriminatzailea</div>
                           <div className="font-mono font-bold text-red-700 text-lg">
-                              Δ = {getDiscriminant().toFixed(1)}
+                              Δ = {getDiscriminant().toFixed(1).replace('.', ',')}
                           </div>
                       </div>
                       <div className="p-3 bg-emerald-50 border border-emerald-100 rounded-lg text-center flex flex-col items-center justify-center">

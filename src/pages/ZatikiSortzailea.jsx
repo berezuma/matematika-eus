@@ -431,7 +431,7 @@ export default function ZatikiSortzailea() {
                     <div className="bg-white p-4 rounded-xl border border-slate-200 text-center">
                       <p className="text-sm text-slate-500 mb-1">Ehuneko baliokidea</p>
                       <p className="text-3xl font-bold text-green-600 font-mono">
-                        {labDen === 0 ? '0' : ((labNum / labDen) * 100).toFixed(1)}%
+                        {labDen === 0 ? '0' : ((labNum / labDen) * 100).toFixed(1).replace('.', ',')}%
                       </p>
                     </div>
                   </div>
@@ -475,7 +475,7 @@ export default function ZatikiSortzailea() {
                           className="w-16 text-center p-2 border-2 border-green-200 rounded-lg focus:border-green-500 focus:outline-none font-bold text-lg"
                         />
                       </div>
-                      <span className="text-slate-400 font-mono text-sm">= {(compNum1 / compDen1).toFixed(3)}</span>
+                      <span className="text-slate-400 font-mono text-sm">= {(compNum1 / compDen1).toFixed(3).replace('.', ',')}</span>
                     </div>
                     <FractionBar numerator={compNum1} denominator={compDen1} color="bg-green-500" />
                   </div>
@@ -499,7 +499,7 @@ export default function ZatikiSortzailea() {
                           className="w-16 text-center p-2 border-2 border-blue-200 rounded-lg focus:border-blue-500 focus:outline-none font-bold text-lg"
                         />
                       </div>
-                      <span className="text-slate-400 font-mono text-sm">= {(compNum2 / compDen2).toFixed(3)}</span>
+                      <span className="text-slate-400 font-mono text-sm">= {(compNum2 / compDen2).toFixed(3).replace('.', ',')}</span>
                     </div>
                     <FractionBar numerator={compNum2} denominator={compDen2} color="bg-blue-500" />
                   </div>

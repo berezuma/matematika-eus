@@ -112,7 +112,7 @@ const DecimalToDMSConverter = () => {
           <div className="mt-4 bg-white rounded-lg p-4 border border-orange-100 space-y-2 text-sm text-slate-600">
             <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Urratsak:</p>
             <p>1. Zati osoa = gradu osoak: <span className="font-mono font-bold text-orange-700">{dms.degrees}°</span></p>
-            <p>2. Zati hamartarra × 60 = {((Math.abs(decimal) - Math.abs(dms.degrees)) * 60).toFixed(4)} → Minutuak: <span className="font-mono font-bold text-orange-700">{dms.minutes}'</span></p>
+            <p>2. Zati hamartarra × 60 = {((Math.abs(decimal) - Math.abs(dms.degrees)) * 60).toFixed(4).replace('.', ',')} → Minutuak: <span className="font-mono font-bold text-orange-700">{dms.minutes}'</span></p>
             <p>3. Minutuen zati hamartarra × 60 = Segundoak: <span className="font-mono font-bold text-orange-700">{dms.seconds}"</span></p>
           </div>
         </div>
@@ -614,13 +614,13 @@ export default function SistemaSexagesimala() {
                     <p className="text-sm text-slate-600">Gradu hamartarrak GMS formatura bihurtzeko, jarraitu urrats hauek:</p>
 
                     <div className="bg-slate-900 text-white rounded-xl p-5 font-mono text-sm space-y-3">
-                      <p className="text-slate-400 text-xs uppercase tracking-widest font-bold mb-3 text-center">Adibidea: 45.7625° → GMS</p>
+                      <p className="text-slate-400 text-xs uppercase tracking-widest font-bold mb-3 text-center">Adibidea: 45,7625° → GMS</p>
                       <div className="space-y-2">
                         <p><span className="text-slate-400">1.</span> Zati osoa = graduak: <span className="text-orange-400 font-bold">45°</span></p>
-                        <p><span className="text-slate-400">2.</span> 0.7625 × 60 = 45.75 → minutuak: <span className="text-amber-400 font-bold">45'</span></p>
-                        <p><span className="text-slate-400">3.</span> 0.75 × 60 = 45 → segundoak: <span className="text-yellow-400 font-bold">45"</span></p>
+                        <p><span className="text-slate-400">2.</span> 0,7625 × 60 = 45,75 → minutuak: <span className="text-amber-400 font-bold">45'</span></p>
+                        <p><span className="text-slate-400">3.</span> 0,75 × 60 = 45 → segundoak: <span className="text-yellow-400 font-bold">45"</span></p>
                       </div>
-                      <p className="text-orange-400 font-bold text-lg text-center mt-4">45.7625° = 45° 45' 45"</p>
+                      <p className="text-orange-400 font-bold text-lg text-center mt-4">45,7625° = 45° 45' 45"</p>
                     </div>
                   </div>
                 </div>
@@ -641,7 +641,7 @@ export default function SistemaSexagesimala() {
                       <div className="space-y-2">
                         <p><span className="text-slate-400">Formula:</span> Graduak + Minutuak/60 + Segundoak/3600</p>
                         <p>30 + 15/60 + 36/3600</p>
-                        <p>30 + 0.25 + 0.01</p>
+                        <p>30 + 0,25 + 0,01</p>
                       </div>
                       <p className="text-amber-400 font-bold text-lg text-center mt-4">30° 15' 36" = 30.26°</p>
                     </div>
@@ -765,10 +765,10 @@ export default function SistemaSexagesimala() {
                       <p><strong>S</strong> = ((hamartar − D) × 60 − M) × 60</p>
                     </div>
                     <div className="bg-white p-4 rounded-xl border border-orange-100">
-                      <p className="text-xs font-bold text-slate-400 uppercase mb-2">Adibidea: 72.4575°</p>
-                      <p className="font-mono">D = floor(72.4575) = <strong className="text-orange-600">72°</strong></p>
-                      <p className="font-mono">M = floor(0.4575 × 60) = floor(27.45) = <strong className="text-orange-600">27'</strong></p>
-                      <p className="font-mono">S = (27.45 − 27) × 60 = 0.45 × 60 = <strong className="text-orange-600">27"</strong></p>
+                      <p className="text-xs font-bold text-slate-400 uppercase mb-2">Adibidea: 72,4575°</p>
+                      <p className="font-mono">D = floor(72,4575) = <strong className="text-orange-600">72°</strong></p>
+                      <p className="font-mono">M = floor(0,4575 × 60) = floor(27,45) = <strong className="text-orange-600">27'</strong></p>
+                      <p className="font-mono">S = (27,45 − 27) × 60 = 0,45 × 60 = <strong className="text-orange-600">27"</strong></p>
                       <p className="font-mono font-bold text-orange-700 mt-2">Emaitza: 72° 27' 27"</p>
                     </div>
                   </div>
@@ -787,8 +787,8 @@ export default function SistemaSexagesimala() {
                     <div className="bg-white p-4 rounded-xl border border-amber-100">
                       <p className="text-xs font-bold text-slate-400 uppercase mb-2">Adibidea: 50° 18' 36"</p>
                       <p className="font-mono">50 + 18/60 + 36/3600</p>
-                      <p className="font-mono">50 + 0.3 + 0.01</p>
-                      <p className="font-mono font-bold text-amber-700 mt-2">Emaitza: 50.31°</p>
+                      <p className="font-mono">50 + 0,3 + 0,01</p>
+                      <p className="font-mono font-bold text-amber-700 mt-2">Emaitza: 50,31°</p>
                     </div>
                   </div>
                 </div>

@@ -162,10 +162,10 @@ const PercentageBar = ({ value, total }) => {
           className="h-full bg-gradient-to-r from-rose-500 to-pink-500 rounded-full transition-all duration-500 flex items-center justify-end pr-2"
           style={{ width: `${Math.min(pct, 100)}%` }}
         >
-          {pct >= 15 && <span className="text-white text-xs font-bold">{pct.toFixed(1)}%</span>}
+          {pct >= 15 && <span className="text-white text-xs font-bold">{pct.toFixed(1).replace('.', ',')}%</span>}
         </div>
       </div>
-      {pct < 15 && <p className="text-xs text-slate-500 text-center">{pct.toFixed(1)}%</p>}
+      {pct < 15 && <p className="text-xs text-slate-500 text-center">{pct.toFixed(1).replace('.', ',')}%</p>}
     </div>
   );
 };
@@ -380,7 +380,7 @@ export default function Proportzionaltasuna() {
                       <p>4 kg sagar → 6€</p>
                       <p>6 kg sagar → 9€</p>
                     </div>
-                    <p className="text-xs text-rose-600 font-bold">k = 1.5 (konstante proportzionala)</p>
+                    <p className="text-xs text-rose-600 font-bold">k = 1,5 (konstante proportzionala)</p>
                   </div>
                   <div className="mt-3 p-2 bg-rose-100 rounded-lg text-xs text-rose-800 text-center font-bold">
                     y/x = k (beti konstante berdina)
@@ -426,10 +426,10 @@ export default function Proportzionaltasuna() {
                       <TrendingUp size={16} /> Hiru Erregela Zuzena
                     </h3>
                     <div className="bg-slate-50 p-4 rounded-lg font-mono text-sm space-y-2 mb-3">
-                      <p>3 litro → 4.5€</p>
+                      <p>3 litro → 4,5€</p>
                       <p>5 litro → <strong>x</strong></p>
                       <div className="border-t border-slate-200 pt-2 mt-2">
-                        <p className="text-rose-600 font-bold">x = (4.5 × 5) / 3 = 7.5€</p>
+                        <p className="text-rose-600 font-bold">x = (4,5 × 5) / 3 = 7,5€</p>
                       </div>
                     </div>
                     <div className="bg-rose-50 p-3 rounded-lg text-xs text-rose-800">
@@ -505,14 +505,14 @@ export default function Proportzionaltasuna() {
                   <div className={`p-4 rounded-xl border ${labType === 'direct' ? 'bg-rose-50 border-rose-100' : 'bg-violet-50 border-violet-100'} text-center`}>
                     <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: labType === 'direct' ? '#e11d48' : '#7c3aed' }}>Funtzioa</p>
                     <p className="font-mono text-lg font-bold" style={{ color: labType === 'direct' ? '#9f1239' : '#5b21b6' }}>
-                      {labType === 'direct' ? `y = ${labK}x` : `y = ${labK} / x`}
+                      {labType === 'direct' ? `y = ${String(labK).replace('.', ',')}x` : `y = ${String(labK).replace('.', ',')} / x`}
                     </p>
                   </div>
 
                   <div>
                     <div className="flex justify-between mb-1">
                       <label className="text-xs font-bold text-slate-500 uppercase">Konstante (k)</label>
-                      <span className={`text-xs font-mono px-2 rounded font-bold ${labType === 'direct' ? 'bg-rose-100 text-rose-600' : 'bg-violet-100 text-violet-600'}`}>{labK}</span>
+                      <span className={`text-xs font-mono px-2 rounded font-bold ${labType === 'direct' ? 'bg-rose-100 text-rose-600' : 'bg-violet-100 text-violet-600'}`}>{String(labK).replace('.', ',')}</span>
                     </div>
                     <input
                       type="range" min="0.5" max="6" step="0.5"
@@ -539,8 +539,8 @@ export default function Proportzionaltasuna() {
                           return (
                             <tr key={x} className="border-t border-slate-100">
                               <td className="py-1.5 px-3">{x}</td>
-                              <td className="py-1.5 px-3">{y % 1 === 0 ? y : y.toFixed(2)}</td>
-                              <td className="py-1.5 px-3 text-emerald-600 font-bold">{check % 1 === 0 ? check : check.toFixed(2)}</td>
+                              <td className="py-1.5 px-3">{y % 1 === 0 ? y : y.toFixed(2).replace('.', ',')}</td>
+                              <td className="py-1.5 px-3 text-emerald-600 font-bold">{check % 1 === 0 ? check : check.toFixed(2).replace('.', ',')}</td>
                             </tr>
                           );
                         })}
@@ -574,7 +574,7 @@ export default function Proportzionaltasuna() {
                     <span className="text-slate-500 mx-3">=</span>
                     <span className="text-white">25/100</span>
                     <span className="text-slate-500 mx-3">=</span>
-                    <span className="text-pink-400">0.25</span>
+                    <span className="text-pink-400">0,25</span>
                   </div>
                 </div>
 
@@ -587,7 +587,7 @@ export default function Proportzionaltasuna() {
                       <p className="text-rose-600 font-bold">= 60</p>
                     </div>
                     <div className="mt-2 text-xs text-slate-500">
-                      Edo: 0.30 × 200 = 60
+                      Edo: 0,30 × 200 = 60
                     </div>
                   </div>
                   <div className="p-5 bg-white border border-slate-200 rounded-xl">
@@ -653,7 +653,7 @@ export default function Proportzionaltasuna() {
                       <span className="text-slate-500 text-lg"> × </span>
                       <span className="text-white">{pctTotal}</span>
                       <span className="text-slate-500 text-lg"> = </span>
-                      <span className="text-emerald-400">{pctResult % 1 === 0 ? pctResult : pctResult.toFixed(2)}</span>
+                      <span className="text-emerald-400">{pctResult % 1 === 0 ? pctResult : pctResult.toFixed(2).replace('.', ',')}</span>
                     </p>
                   </div>
                 </div>
@@ -668,7 +668,7 @@ export default function Proportzionaltasuna() {
                   ].map((item, i) => (
                     <div key={i} className="p-3 bg-slate-50 border border-slate-100 rounded-lg text-center">
                       <p className="text-xs text-slate-500 font-bold mb-1">{item.label}</p>
-                      <p className="font-mono font-bold text-slate-800">{item.val % 1 === 0 ? item.val : item.val.toFixed(2)}€</p>
+                      <p className="font-mono font-bold text-slate-800">{item.val % 1 === 0 ? item.val : item.val.toFixed(2).replace('.', ',')}€</p>
                     </div>
                   ))}
                 </div>
@@ -679,12 +679,12 @@ export default function Proportzionaltasuna() {
             <Section title="Ohiko Ehunekoak Buruz Ikasi" icon={BookOpen}>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {[
-                  { pct: '10%', frac: '1/10', dec: '×0.1', trick: 'Koma bat ezkerrera mugitu' },
-                  { pct: '20%', frac: '1/5', dec: '×0.2', trick: '%10 kalkulatu eta ×2' },
-                  { pct: '25%', frac: '1/4', dec: '×0.25', trick: 'Laurdena: ÷4' },
-                  { pct: '33%', frac: '1/3', dec: '×0.33', trick: 'Herena: ÷3' },
-                  { pct: '50%', frac: '1/2', dec: '×0.5', trick: 'Erdia: ÷2' },
-                  { pct: '75%', frac: '3/4', dec: '×0.75', trick: '%25 kendu totalari' },
+                  { pct: '10%', frac: '1/10', dec: '×0,1', trick: 'Koma bat ezkerrera mugitu' },
+                  { pct: '20%', frac: '1/5', dec: '×0,2', trick: '%10 kalkulatu eta ×2' },
+                  { pct: '25%', frac: '1/4', dec: '×0,25', trick: 'Laurdena: ÷4' },
+                  { pct: '33%', frac: '1/3', dec: '×0,33', trick: 'Herena: ÷3' },
+                  { pct: '50%', frac: '1/2', dec: '×0,5', trick: 'Erdia: ÷2' },
+                  { pct: '75%', frac: '3/4', dec: '×0,75', trick: '%25 kendu totalari' },
                   { pct: '100%', frac: '1/1', dec: '×1', trick: 'Totala bera da!' },
                   { pct: '200%', frac: '2/1', dec: '×2', trick: 'Bikoitza' },
                 ].map((item, i) => (
