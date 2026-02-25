@@ -24,100 +24,118 @@ import useDocumentTitle from '../hooks/useDocumentTitle';
 
 /* ─────────────────────────────────────────────
    USaP AZTERKETA PRESTAKETA
-   EHU 2024/25 eredu berriak
+   EHU 2025/26 eredu berriak
    ───────────────────────────────────────────── */
 
-// --- Matematika II Ariketak ---
+// --- Matematika II Ariketak (2025/26 eredu berria) ---
+// 5 ariketa: 1 aljebra, 1 geometria, 2 analisi, 1 probabilitate
+// 3 aukera barnekorik gabe (derrigorrezkoak) + 2 aukera barnekoekin (A/B hautatu)
 const MATE_ARIKETAK = [
   {
     id: 1,
-    izena: '1. Ariketa (Derrigorrezkoa)',
-    gaia: 'Probabilitatea - Binomial Banaketa',
-    deskribapena: 'M72 txertoari buruzko probabilitate-ariketa. Binomial banaketa erabili behar da txertoa hartzen duten pertsonak aztertzeko.',
+    izena: '1. Ariketa (Aukera barnekorik gabe)',
+    gaia: 'Aljebra Lineala',
+    deskribapena: 'Ekuazio-sistema lineal bat parametro batekin diskutitu eta ebatzi. Atal guztiak erantzun behar dira.',
     atala: [
       {
         letra: '',
-        testua: 'M72 birusaren aurkako txertoa aztertzen ari da. Txertoak %80ko eraginkortasuna du. 10 pertsona txertatzen badira:'
+        testua: 'Ekuazio-sistema lineal bat emanda, parametro baten arabera:'
       },
       {
         letra: 'a)',
-        testua: 'Zein da zehazki 8 pertsonatan eraginkorra izatearen probabilitatea? Erabili binomial banaketa: B(10, 0.8).'
+        testua: 'Diskutitu sistema parametroaren arabera (bateragarri determinatua, bateragarri indeterminatua, bateraezina). Erabili Rouché-Frobenius teorema.'
       },
       {
         letra: 'b)',
-        testua: 'Zein da gutxienez 7 pertsonatan eraginkorra izatearen probabilitatea?'
+        testua: 'Bateragarri determinatua denean, ebatzi sistema Cramer-en arauaren edo Gauss-en eliminazioaren bidez.'
       },
       {
         letra: 'c)',
-        testua: 'Kalkulatu esperotako balioa eta desbideratze tipikoa.'
+        testua: 'Bateragarri indeterminatua denean, lortu irtenbide orokorra.'
       }
     ],
-    kalifikazioa: '3 puntu. a) 1 puntu, b) 1 puntu, c) 1 puntu.'
+    kalifikazioa: '2 puntu. a) 1 puntu, b) 0.5 puntu, c) 0.5 puntu.'
   },
   {
     id: 2,
-    izena: '2. Ariketa (2A / 2B hautatu)',
-    gaia: 'Aljebra Lineala',
-    deskribapena: 'Ekuazio-sistema edo matrizearen heina aukeratu.',
+    izena: '2. Ariketa (Aukera barnekorik gabe)',
+    gaia: 'Analisia - Funtzioen Azterketa',
+    deskribapena: 'Funtzio baten azterketa osoa. Atal guztiak erantzun behar dira.',
     atala: [
       {
-        letra: '2A)',
-        testua: 'Parametro bat duen ekuazio-sistema lineala emanda, diskutitu sistema parametroaren arabera (bateragarri determinatua, bateragarri indeterminatua, bateraezina). Bateragarri determinatua denean, ebatzi sistema.'
+        letra: '',
+        testua: 'f(x) funtzioa emanda:'
       },
       {
-        letra: '2B)',
-        testua: 'Matrizea emanda, kalkulatu bere heina (rangoa) parametro baten arabera. Zein balioetarako aldatzen da heina?'
+        letra: 'a)',
+        testua: 'Kalkulatu funtzioaren eremua eta simetria/antisimetria aztertu.'
+      },
+      {
+        letra: 'b)',
+        testua: 'Kalkulatu lehen deribatua, monotonia-tarteak eta mutur erlatiboak.'
+      },
+      {
+        letra: 'c)',
+        testua: 'Kalkulatu bigarren deribatua, kurbadura eta inflexio-puntuak. Adierazi irudikapen grafikoa.'
       }
     ],
-    kalifikazioa: '2 puntu. Diskusioa: 1.5 puntu, ebazpena: 0.5 puntu.'
+    kalifikazioa: '2 puntu. a) 0.5 puntu, b) 0.75 puntu, c) 0.75 puntu.'
   },
   {
     id: 3,
-    izena: '3. Ariketa (3A / 3B hautatu)',
-    gaia: 'Geometria - Zuzenak eta Planoak',
-    deskribapena: 'Geometria analitikoaren ariketak espazioan.',
+    izena: '3. Ariketa (Aukera barnekorik gabe)',
+    gaia: 'Probabilitatea',
+    deskribapena: 'Probabilitate-ariketa. Atal guztiak erantzun behar dira.',
     atala: [
       {
-        letra: '3A)',
-        testua: 'Bi zuzen emanda espazioan (forma parametrikoan edo jarraian), aztertu haien posizioa erlatiboa (ebakitzen diren, paraleloak diren edo gurutzatuak diren). Ebakitzen badira, kalkulatu ebaketa-puntua.'
+        letra: '',
+        testua: 'Probabilitate-problema bat emanda:'
       },
       {
-        letra: '3B)',
+        letra: 'a)',
+        testua: 'Identifikatu gertaerak eta kalkulatu oinarrizko probabilitateak. Erabili Bayes-en teorema edo probabilitate baldintzatua behar denean.'
+      },
+      {
+        letra: 'b)',
+        testua: 'Zehaztu aldagai aleatorioaren banaketa (binomiala, normala...) eta kalkulatu eskatutako probabilitateak.'
+      },
+      {
+        letra: 'c)',
+        testua: 'Kalkulatu esperotako balioa eta desbideratze tipikoa. Interpretatu emaitzak testuinguruan.'
+      }
+    ],
+    kalifikazioa: '2 puntu. a) 0.75 puntu, b) 0.75 puntu, c) 0.5 puntu.'
+  },
+  {
+    id: 4,
+    izena: '4. Ariketa (4A / 4B hautatu)',
+    gaia: 'Geometria - Zuzenak eta Planoak',
+    deskribapena: 'Geometria analitikoaren ariketak espazioan. Bi aukeratik bat hautatu.',
+    atala: [
+      {
+        letra: '4A)',
+        testua: 'Bi zuzen emanda espazioan (forma parametrikoan edo jarraian), aztertu haien posizioa erlatiboa (ebakitzen diren, paraleloak diren edo gurutzatuak diren). Ebakitzen badira, kalkulatu ebaketa-puntua. Bestela, kalkulatu bien arteko distantzia.'
+      },
+      {
+        letra: '4B)',
         testua: 'Zuzen bat eta plano bat emanda, aztertu haien posizioa erlatiboa. Ebakitzen badira, kalkulatu ebaketa-puntua eta angelua. Paraleloak badira, kalkulatu distantzia.'
       }
     ],
     kalifikazioa: '2 puntu. Posizioa: 1 puntu, kalkuluak: 1 puntu.'
   },
   {
-    id: 4,
-    izena: '4. Ariketa (4A / 4B hautatu)',
-    gaia: 'Analisia - Funtzioen Azterketa',
-    deskribapena: 'Funtzio baten azterketa osoa.',
-    atala: [
-      {
-        letra: '4A)',
-        testua: 'f(x) = x³ + Ax² + Bx + C funtzioa emanda, non A, B, C baldintzak betetzen dituzten (adibidez, puntu jakin bat igarotzea, mutur erlatibo bat izatea...). Kalkulatu A, B, C balioak eta egin funtzioaren azterketa osoa: eremua, simetria, monotonia, mutur erlatiboak, kurbadura, inflexio-puntuak.'
-      },
-      {
-        letra: '4B)',
-        testua: 'f(x) = 2x·e^(-2x²) funtzioaren azterketa osoa egin: eremua, simetria/antisimetria, limiteak infinituan, deribatuak, mutur erlatiboak, inflexio-puntuak. Azkenik, adierazi irudikapen grafikoa.'
-      }
-    ],
-    kalifikazioa: '2 puntu. Ezaugarri bakoitza: 0.25-0.5 puntu.'
-  },
-  {
     id: 5,
     izena: '5. Ariketa (5A / 5B hautatu)',
-    gaia: 'Integralak',
-    deskribapena: 'Integral mugagabeak edo mugatuak.',
+    gaia: 'Analisia - Integralak',
+    deskribapena: 'Integral mugagabeak, mugatuak edo azalerak. Bi aukeratik bat hautatu.',
     atala: [
       {
         letra: '5A)',
-        testua: 'Bi integral kalkulatu: bat integrazioa aldagaiaren aldaketaz eta bestea zatikako integrazioz. Adibidez: integral de x·cos(x) dx eta integral de 1/(x²+4) dx.'
+        testua: 'Bi integral kalkulatu: bat integrazioa aldagaiaren aldaketaz edo zatikako integrazioz, eta bestea funtzio arrazional baten integrala. Adibidez: ∫ x·cos(x) dx eta ∫ 1/(x²+4) dx.'
       },
       {
         letra: '5B)',
-        testua: 'Bi kurben arteko azalera kalkulatu. Kurbak emanda (adibidez, parabola bat eta zuzen bat), kalkulatu ebaketa-puntuak eta azalera mugatua.'
+        testua: 'Bi kurben arteko azalera kalkulatu. Kurbak emanda (adibidez, parabola bat eta zuzen bat), kalkulatu ebaketa-puntuak eta azalera mugatua integral mugatuak erabiliz.'
       }
     ],
     kalifikazioa: '2 puntu. Integral/azalera bakoitza: 1 puntu.'
@@ -648,7 +666,7 @@ export default function Usap() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium mb-6">
               <GraduationCap size={16} />
-              EHU 2024/25 eredu berriak
+              EHU 2025/26 eredu berriak
             </div>
             <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
               USaP Azterketa <span className="text-indigo-600">Prestaketa</span>
@@ -676,24 +694,36 @@ export default function Usap() {
           >
             <h3 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
               <FileText size={20} className="text-indigo-600" />
-              Azterketaren formatua
+              Azterketaren formatua (2025/26)
             </h3>
             <ul className="space-y-2 text-sm text-slate-600">
               <li className="flex items-start gap-2">
                 <CheckCircle size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
-                <span><strong>5 ariketa</strong> daude guztira azterketako.</span>
+                <span>Azterketaren iraupena: <strong>90 minutu</strong>.</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
-                <span><strong>1. ariketa derrigorrezkoa</strong> da (3 puntu).</span>
+                <span><strong>5 ariketa</strong>: 1 aljebra, 1 geometria, 2 analisi eta 1 probabilitate.</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
-                <span>Beste <strong>4 ariketatik 3 aukeratu</strong> behar dira (2 puntu bakoitza, bat bi aukerarekin).</span>
+                <span><strong>3 ariketa aukera barnekorik gabe</strong>: atal/galdera guztiak erantzun behar dira.</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
-                <span>Guztira: <strong>3 + 3×2 = 9 puntu</strong> (10etik normalizatuta).</span>
+                <span><strong>2 ariketa 2 aukerarekin</strong>: bakarra hautatu behar da. Bi aukerak jakintza-arlo berekoak dira.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
+                <span>Aukera barnekorik gabeko ariketa bat <strong>analisi edukiekin</strong> lotutakoa da.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
+                <span>Gutxienez azterketaren <strong>%40a konpetentzietan</strong> oinarritutakoa izango da.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
+                <span>Guztira: <strong>5 × 2 = 10 puntu</strong>.</span>
               </li>
             </ul>
           </motion.div>
@@ -720,10 +750,10 @@ export default function Usap() {
                 Probabilitatea, aljebra lineala, geometria espazioan, analisi matematikoa eta integralak.
               </p>
               <ul className="text-xs text-slate-500 space-y-1 mb-4">
-                <li>Binomial banaketa eta probabilitatea</li>
-                <li>Matrizearen heina, ekuazio-sistemak</li>
-                <li>Zuzenak eta planoak espazioan</li>
-                <li>Funtzioen azterketa eta integralak</li>
+                <li>Aljebra lineala: ekuazio-sistemak</li>
+                <li>Analisia: funtzioen azterketa eta integralak</li>
+                <li>Geometria: zuzenak eta planoak espazioan</li>
+                <li>Probabilitatea eta banaketak</li>
               </ul>
               <div className="flex items-center text-indigo-600 text-sm font-bold gap-1 group-hover:gap-2 transition-all">
                 Eredua ikusi <ArrowRight size={16} />
@@ -815,7 +845,7 @@ export default function Usap() {
             </button>
             <h1 className="text-3xl font-extrabold text-slate-900 mb-2">{izena}</h1>
             <p className="text-slate-600">
-              EHU 2024/25 eredu berria. Ariketa bakoitza sakatu xehetasunak ikusteko.
+              EHU 2025/26 eredu berria. Ariketa bakoitza sakatu xehetasunak ikusteko.
             </p>
           </motion.div>
 
