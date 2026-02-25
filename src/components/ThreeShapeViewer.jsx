@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
@@ -456,11 +456,26 @@ function buildShapeMesh(shapeType, params) {
   return { group, labels };
 }
 
+function isWebGLAvailable() {
+  try {
+    const canvas = document.createElement('canvas');
+    return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+  } catch {
+    return false;
+  }
+}
+
 export default function ThreeShapeViewer({ shapeType, params }) {
   const containerRef = useRef(null);
   const stateRef = useRef(null);
+  const [webGLSupported, setWebGLSupported] = useState(true);
 
   useEffect(() => {
+    if (!isWebGLAvailable()) {
+      setWebGLSupported(false);
+      return;
+    }
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -595,6 +610,17 @@ export default function ThreeShapeViewer({ shapeType, params }) {
     }
     state.controls.update();
   }, [shapeType, params]);
+
+  if (!webGLSupported) {
+    return (
+      <div className="relative w-full rounded-xl border border-slate-200 overflow-hidden bg-slate-100 flex items-center justify-center text-center p-6" style={{ height: '350px' }}>
+        <div>
+          <p className="text-slate-600 font-semibold mb-2">3D ikuspegia ez dago erabilgarri</p>
+          <p className="text-slate-500 text-sm">Zure nabigatzaileak ez du WebGL onartzen. Eguneratu nabigatzailea edo probatu beste gailu batean.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div

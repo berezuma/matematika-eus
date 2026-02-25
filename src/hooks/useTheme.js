@@ -2,9 +2,15 @@ import { useState, useEffect } from 'react';
 
 export default function useTheme() {
   const [dark, setDark] = useState(() => {
-    const stored = localStorage.getItem('mate-theme');
-    if (stored) return stored === 'dark';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    try {
+      const stored = localStorage.getItem('mate-theme');
+      if (stored) return stored === 'dark';
+    } catch { /* localStorage not available */ }
+    try {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } catch {
+      return false;
+    }
   });
 
   useEffect(() => {
@@ -14,7 +20,7 @@ export default function useTheme() {
     } else {
       root.classList.remove('dark');
     }
-    localStorage.setItem('mate-theme', dark ? 'dark' : 'light');
+    try { localStorage.setItem('mate-theme', dark ? 'dark' : 'light'); } catch {}
   }, [dark]);
 
   return [dark, () => setDark(d => !d)];

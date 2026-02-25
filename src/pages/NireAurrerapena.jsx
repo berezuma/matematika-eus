@@ -128,8 +128,8 @@ export default function NireAurrerapena() {
 
   const clearAll = () => {
     if (window.confirm('Aurrerapen guztiak ezabatu nahi dituzu? Ekintza hau ezin da desegin.')) {
-      localStorage.removeItem('mate-progress');
-      localStorage.removeItem('mate-session');
+      try { localStorage.removeItem('mate-progress'); } catch {}
+      try { localStorage.removeItem('mate-session'); } catch {}
       setProgress({});
     }
   };
