@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import ScrollToTop from './ScrollToTop';
 import LoadingSpinner from './components/LoadingSpinner';
 import PageTransition from './components/PageTransition';
@@ -149,6 +150,7 @@ function App() {
           <Route path="*" element={P(NotFound)} />
         </Routes>
       </AnimatePresence>
+      <Analytics />
     </>
   );
 }
